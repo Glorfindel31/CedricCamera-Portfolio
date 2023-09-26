@@ -19,7 +19,7 @@ export async function GET(request) {
     // Subsequent query to fetch all public IDs based on total_count
     const result = await cloudinary.v2.search
       .expression('resource_type:image') // Search for all images
-      .max_results(totalCount) // Using the total_count value here
+      .max_results(3) // Using the total_count value here
       .execute();
 
     const data = result.resources;
