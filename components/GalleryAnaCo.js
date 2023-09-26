@@ -34,11 +34,16 @@ function shuffle(array) {
   return array;
 }
 
-export default function GalleryAll() {
+function chooseFolder(array) {
+  return array.filter(data => data.folder === 'film/comercial');
+}
+
+export default function GalleryAnaCo() {
   const [initialData, setInitialData] = useState(null);
   useEffect(() => {
     getData().then(data => {
-      let shuffledData = shuffle(data.data);
+      let filteredData = chooseFolder(data.data);
+      let shuffledData = shuffle(filteredData);
       data.data = shuffledData;
       setInitialData(data);
     });
@@ -67,6 +72,7 @@ export default function GalleryAll() {
               alt={data.public_id}
               format={'webp'}
               folder={data.folder}
+              // rawTransformations={['c_scale,w_400']}
             />
           ))}
         </div>
