@@ -1,4 +1,15 @@
 import CloudinaryImage from '@/components/Cloudinary-image';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 
 export async function getData() {
   const result = await fetch('http://localhost:3000/searchapi');
@@ -9,13 +20,37 @@ export async function getData() {
   return result.json();
 }
 
+//shuffle function to display different images.
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+
 export default async function Home() {
-  const data = await getData();
+  const initialData = await getData();
+  shuffle(initialData.data);
 
   const MAX_COLUMNs = 3;
 
   function getColumns(colIndex) {
-    return data.data.filter((data, idx) => idx % MAX_COLUMNs === colIndex);
+    return initialData.data.filter(
+      (data, idx) => idx % MAX_COLUMNs === colIndex,
+    );
   }
 
   return (
@@ -28,7 +63,7 @@ export default async function Home() {
         <nav>
           <ul className="space-y-4 pl-4">
             <li>
-              <a href="#digital-commercial">Digital/Commercial</a>
+              <button>Digital/Commercial</button>
             </li>
             <li>
               <a href="#digital-other">Digital/Other</a>
@@ -40,7 +75,21 @@ export default async function Home() {
               <a href="#analogue-other">Analogue/Other</a>
             </li>
             <li>
-              <a href="#infos">Infos</a>
+              <AlertDialog>
+                <AlertDialogTrigger>Infos</AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Infos</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone. This will permanently delete
+                      your account and remove your data from our servers.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogAction>Close</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </li>
           </ul>
         </nav>
@@ -48,7 +97,6 @@ export default async function Home() {
           <small className=" text-xs">Copyright 2023 Cedric Florentin</small>
         </footer>
       </aside>
-
       {/* Gallery */}
 
       <main className="ml-[20%] grid grid-cols-3 gap-2 p-4 pr-10">
