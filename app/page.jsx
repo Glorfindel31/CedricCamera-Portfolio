@@ -1,10 +1,10 @@
 'use client';
 import {useState} from 'react';
-import GalleryAll from '@/components/GalleryAll';
-import GalleryDigiCo from '@/components/GalleryDigiCo';
-import GalleryDigiOth from '@/components/GalleryDigiOth';
-import GalleryAnaCo from '@/components/GalleryAnaCo';
-import GalleryAnaOth from '@/components/GalleryAnaOth';
+import GalleryAll from '@/app/gallery/GalleryAll';
+import GalleryDigiCo from '@/app/gallery/GalleryDigiCo';
+import GalleryDigiOth from '@/app/gallery/GalleryDigiOth';
+import GalleryAnaCo from '@/app/gallery/GalleryAnaCo';
+import GalleryAnaOth from '@/app/gallery/GalleryAnaOth';
 import Aside from '@/components/Aside';
 
 export default function Home() {
@@ -18,6 +18,7 @@ export default function Home() {
         setSelectedGallery={setSelectedGallery}
       />
       {/* Gallery */}
+
       {selectedGallery === 'all' && <GalleryAll />}
       {selectedGallery === 'digiCo' && <GalleryDigiCo />}
       {selectedGallery === 'digiOth' && <GalleryDigiOth />}

@@ -1,6 +1,7 @@
 'use client';
 import CloudinaryImage from '@/components/Cloudinary-image';
 import {useState, useEffect} from 'react';
+import ImageModal from '@/components/ui/imageModal';
 
 export async function getData() {
   const result = await fetch('http://localhost:3000/searchapi', {
@@ -34,20 +35,25 @@ function shuffle(array) {
   return array;
 }
 
-function chooseFolder(array) {
-  return array.filter(data => data.folder === 'film/comercial');
-}
-
-export default function GalleryAnaCo() {
+export default function GalleryAll() {
   const [initialData, setInitialData] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [currentImage, setCurrentImage] = useState({});
+
   useEffect(() => {
     getData().then(data => {
-      let filteredData = chooseFolder(data.data);
-      let shuffledData = shuffle(filteredData);
+      let shuffledData = shuffle(data.data);
       data.data = shuffledData;
       setInitialData(data);
     });
   }, []);
+
+  // This function will be called when an image is clicked
+  const handleImageClick = imageData => {
+    setCurrentImage(imageData);
+    console.log(imageData);
+    setShowModal(true);
+  };
 
   const MAX_COLUMNs = 3;
 
@@ -59,12 +65,14 @@ export default function GalleryAnaCo() {
       (data, idx) => idx % MAX_COLUMNs === colIndex,
     );
   }
+
   return (
     <main className="ml-[20%] grid grid-cols-3 gap-2 p-4 pr-10">
       {[getColumns(0), getColumns(1), getColumns(2)].map((column, idx) => (
         <div key={idx} className="flex flex-col space-y-2">
           {column.map((data, index) => (
             <CloudinaryImage
+              onClick={() => handleImageClick(data)}
               key={data.public_id}
               src={data.public_id}
               height={data.height}
@@ -72,11 +80,19 @@ export default function GalleryAnaCo() {
               alt={data.public_id}
               format={'webp'}
               folder={data.folder}
-              // rawTransformations={['c_scale,w_400']}
             />
           ))}
         </div>
       ))}
+      <ImageModal
+        show={showModal}
+        src={currentImage.public_id}
+        onClose={() => setShowModal(false)}
+        alt={currentImage.public_id}
+        format={'webp'}
+        height={currentImage.height}
+        width={currentImage.width}
+      />
     </main>
   );
 }

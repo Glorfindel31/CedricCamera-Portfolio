@@ -10,6 +10,8 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 
+import {Button} from '@/components/ui/button';
+
 export default function Aside({selectedGallery, setSelectedGallery}) {
   return (
     <aside className="fixed top-0 left-0 flex flex-col w-[20%] p-8 h-screen">
@@ -17,38 +19,50 @@ export default function Aside({selectedGallery, setSelectedGallery}) {
         <h1 className="text-2xl font-bold mb-4">Cedric Florentin</h1>
       </div>
       <nav>
-        <ul className="space-y-4 pl-4">
+        <ul className="pl-2">
           <li>
-            <button onClick={() => setSelectedGallery('all')}>
+            <Button variant="ghost" onClick={() => setSelectedGallery('all')}>
               All Images
-            </button>
+            </Button>
           </li>
           <li>
-            <button onClick={() => setSelectedGallery('digiCo')}>
+            <Button
+              variant="ghost"
+              onClick={() => setSelectedGallery('digiCo')}
+            >
               Digital/Commercial
-            </button>
+            </Button>
           </li>
           <li>
-            <button onClick={() => setSelectedGallery('digiOth')}>
+            <Button
+              variant="ghost"
+              onClick={() => setSelectedGallery('digiOth')}
+            >
               Digital/Other
-            </button>
+            </Button>
           </li>
           <li>
-            <button onClick={() => setSelectedGallery('anaCo')}>
+            <Button variant="ghost" onClick={() => setSelectedGallery('anaCo')}>
               Analogue/Commercial
-            </button>
+            </Button>
           </li>
           <li>
-            <button onClick={() => setSelectedGallery('anaOth')}>
+            <Button
+              variant="ghost"
+              onClick={() => setSelectedGallery('anaOth')}
+            >
               Analogue/Other
-            </button>
+            </Button>
           </li>
           <li>
             <AlertDialog>
-              <AlertDialogTrigger>Infos</AlertDialogTrigger>
+              <AlertDialogTrigger>
+                <Button variant="ghost">Infos</Button>
+              </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Infos</AlertDialogTitle>
+                  Infos
+                  <AlertDialogTitle></AlertDialogTitle>
                   <AlertDialogDescription>
                     This action cannot be undone. This will permanently delete
                     your account and remove your data from our servers.
@@ -59,6 +73,13 @@ export default function Aside({selectedGallery, setSelectedGallery}) {
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
+          </li>
+          <li>
+            <Button variant="ghost">
+              <a href="https://www.instagram.com/cedriccamera/" target="_blank">
+                Instagram
+              </a>
+            </Button>
           </li>
         </ul>
       </nav>

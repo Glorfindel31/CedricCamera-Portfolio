@@ -74,3 +74,6 @@
     @apply bg-background text-foreground;
   }
 }
+.cursor-pointer {
+  cursor: pointer;
+}
