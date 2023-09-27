@@ -1,6 +1,7 @@
 'use client';
 import CloudinaryImage from '@/components/Cloudinary-image';
 import {useState, useEffect} from 'react';
+import ImageModal from '@/components/ui/imageModal';
 
 export async function getData() {
   const result = await fetch('http://localhost:3000/searchapi', {
@@ -40,6 +41,8 @@ function chooseFolder(array) {
 
 export default function GalleryAnaCo() {
   const [initialData, setInitialData] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [currentImage, setCurrentImage] = useState({});
 
   useEffect(() => {
     getData().then(data => {
@@ -49,6 +52,11 @@ export default function GalleryAnaCo() {
       setInitialData(data);
     });
   }, []);
+
+  const handleImageClick = imageData => {
+    setCurrentImage(imageData);
+    setShowModal(true);
+  };
 
   const MAX_COLUMNs = 3;
 
@@ -66,6 +74,7 @@ export default function GalleryAnaCo() {
         <div key={idx} className="flex flex-col space-y-2">
           {column.map((data, index) => (
             <CloudinaryImage
+              onClick={() => handleImageClick(data)}
               key={data.public_id}
               src={data.public_id}
               height={data.height}
@@ -73,11 +82,19 @@ export default function GalleryAnaCo() {
               alt={data.public_id}
               format={'webp'}
               folder={data.folder}
-              // rawTransformations={['c_scale,w_400']}
             />
           ))}
         </div>
       ))}
+      <ImageModal
+        show={showModal}
+        src={currentImage.public_id}
+        onClose={() => setShowModal(false)}
+        alt={currentImage.public_id}
+        format={'webp'}
+        height={currentImage.height}
+        width={currentImage.width}
+      />
     </main>
   );
 }
