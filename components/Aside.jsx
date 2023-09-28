@@ -8,9 +8,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-
-import {Button} from '@/components/ui/button';
+} from '../components/ui/alert-dialog';
+import Link from 'next/link';
+import {Button, buttonVariants} from '../components/ui/button';
 
 export default function Aside({selectedGallery, setSelectedGallery}) {
   return (
@@ -55,8 +55,17 @@ export default function Aside({selectedGallery, setSelectedGallery}) {
             </Button>
           </li>
           <li>
+            <Link
+              className={buttonVariants({variant: 'ghost'})}
+              href="https://www.instagram.com/cedriccamera/"
+              target="_blank"
+            >
+              Instagram
+            </Link>
+          </li>
+          <li>
             <AlertDialog>
-              <AlertDialogTrigger>
+              <AlertDialogTrigger asChild>
                 <Button variant="ghost">Infos</Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
@@ -73,13 +82,6 @@ export default function Aside({selectedGallery, setSelectedGallery}) {
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
-          </li>
-          <li>
-            <Button variant="ghost">
-              <a href="https://www.instagram.com/cedriccamera/" target="_blank">
-                Instagram
-              </a>
-            </Button>
           </li>
         </ul>
       </nav>

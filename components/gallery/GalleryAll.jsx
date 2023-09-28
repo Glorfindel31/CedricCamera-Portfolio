@@ -1,7 +1,7 @@
 'use client';
-import CloudinaryImage from '@/components/Cloudinary-image';
+import CloudinaryImage from '../Cloudinary-image';
 import {useState, useEffect} from 'react';
-import ImageModal from '@/components/ui/imageModal';
+import ImageModal from '../ui/imageModal';
 
 export async function getData() {
   const result = await fetch('http://localhost:3000/searchapi', {
@@ -51,7 +51,6 @@ export default function GalleryAll() {
   // This function will be called when an image is clicked
   const handleImageClick = imageData => {
     setCurrentImage(imageData);
-    console.log(imageData);
     setShowModal(true);
   };
 

@@ -1,11 +1,11 @@
 'use client';
 import {useState} from 'react';
-import GalleryAll from '@/app/gallery/GalleryAll';
-import GalleryDigiCo from '@/app/gallery/GalleryDigiCo';
-import GalleryDigiOth from '@/app/gallery/GalleryDigiOth';
-import GalleryAnaCo from '@/app/gallery/GalleryAnaCo';
-import GalleryAnaOth from '@/app/gallery/GalleryAnaOth';
-import Aside from '@/components/Aside';
+import GalleryAll from '../components/gallery/GalleryAll';
+import GalleryDigiCo from '../components/gallery/GalleryDigiCo';
+import GalleryDigiOth from '../components/gallery/GalleryDigiOth';
+import GalleryAnaCo from '../components/gallery/GalleryAnaCo';
+import GalleryAnaOth from '../components/gallery/GalleryAnaOth';
+import Aside from '../components/Aside';
 
 export default function Home() {
   const [selectedGallery, setSelectedGallery] = useState('all');
