@@ -26,18 +26,12 @@ export default function Aside({selectedGallery, setSelectedGallery}) {
             </Button>
           </li>
           <li>
-            <Button
-              variant="ghost"
-              onClick={() => setSelectedGallery('digiCo')}
-            >
+            <Button variant="ghost" onClick={() => setSelectedGallery('digiCo')}>
               Digital/Commercial
             </Button>
           </li>
           <li>
-            <Button
-              variant="ghost"
-              onClick={() => setSelectedGallery('digiOth')}
-            >
+            <Button variant="ghost" onClick={() => setSelectedGallery('digiOth')}>
               Digital/Other
             </Button>
           </li>
@@ -47,10 +41,7 @@ export default function Aside({selectedGallery, setSelectedGallery}) {
             </Button>
           </li>
           <li>
-            <Button
-              variant="ghost"
-              onClick={() => setSelectedGallery('anaOth')}
-            >
+            <Button variant="ghost" onClick={() => setSelectedGallery('anaOth')}>
               Analogue/Other
             </Button>
           </li>
@@ -70,11 +61,9 @@ export default function Aside({selectedGallery, setSelectedGallery}) {
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  Infos
-                  <AlertDialogTitle></AlertDialogTitle>
                   <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
+                    This action cannot be undone. This will permanently delete your
+                    account and remove your data from our servers.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
