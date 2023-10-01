@@ -4,7 +4,7 @@ export default function Hamburger({menuHeight, setMenuHeight}) {
   const [isOpen, setIsOpen] = useState(false);
   const genericHamburgerLine = `h-1 w-8 my-1 rounded-full bg-black transition ease transform duration-300`;
   const toggleMenu = () => {
-    setMenuHeight(menuHeight === '40%' ? '1px' : '40%');
+    setMenuHeight(menuHeight === '18rem' ? '1px' : '18rem');
     setIsOpen(!isOpen);
   };
 

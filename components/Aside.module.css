@@ -1,16 +1,7 @@
-@media (max-width: 639px) {
-  .aside-menu {
-    width: 100vw;
-  }
-}
-
 .aside-menu {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20%;
+  width: 25vw;
   height: 100vh;
   padding: 2rem;
 }
@@ -26,4 +17,10 @@
 }
 .aside-menu_logo-box--logo span {
   font-weight: 700;
+}
+@media screen and (max-width: 639px) {
+  .aside-menu {
+    width: 100%;
+    height: auto;
+  }
 }

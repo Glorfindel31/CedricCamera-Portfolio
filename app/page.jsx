@@ -13,11 +13,13 @@ export default function Home() {
       <Aside selectedGallery={selectedGallery} setSelectedGallery={setSelectedGallery} />
 
       {/* Gallery */}
-      {selectedGallery === 'all' && <GalleryAll />}
-      {selectedGallery === 'digiCo' && <GalleryOther filter={'digital/comercial'} />}
-      {selectedGallery === 'digiOth' && <GalleryOther filter={'digital/others'} />}
-      {selectedGallery === 'anaCo' && <GalleryOther filter={'film/comercial'} />}
-      {selectedGallery === 'anaOth' && <GalleryOther filter={'film/others'} />}
+      <div className={style.gallery}>
+        {selectedGallery === 'all' && <GalleryAll />}
+        {selectedGallery === 'digiCo' && <GalleryOther filter={'digital/comercial'} />}
+        {selectedGallery === 'digiOth' && <GalleryOther filter={'digital/others'} />}
+        {selectedGallery === 'anaCo' && <GalleryOther filter={'film/comercial'} />}
+        {selectedGallery === 'anaOth' && <GalleryOther filter={'film/others'} />}
+      </div>
     </div>
   );
 }

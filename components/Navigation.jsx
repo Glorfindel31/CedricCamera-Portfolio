@@ -7,7 +7,7 @@ export default function Navigation({menuHeight, handleOpenModal, setSelectedGall
     <nav
       style={{
         height: menuHeight,
-        transition: 'height 1s cubic-bezier(0.24, 0.06, 0.05, 0.95)',
+        transition: 'all 1s cubic-bezier(0.24, 0.06, 0.05, 0.95)',
       }}
       className={style.navigation}
     >

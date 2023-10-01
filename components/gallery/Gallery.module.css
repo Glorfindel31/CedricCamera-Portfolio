@@ -4,7 +4,6 @@
   gap: 0.5rem;
   padding: 1rem;
   padding-right: 2rem;
-  margin-left: 20%;
 }
 .gallery--column {
   display: flex;
@@ -13,4 +12,15 @@
 .gallery--column > :not([hidden]) ~ :not([hidden]) {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+@media screen and (max-width: 639px) {
+  .gallery {
+    gap: 1px;
+    padding-right: 0;
+    padding: 3px;
+  }
+  .gallery--column > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1px;
+    margin-bottom: 1px;
+  }
 }
