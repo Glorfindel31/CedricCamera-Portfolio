@@ -1,0 +1,29 @@
+@media (max-width: 639px) {
+  .aside-menu {
+    width: 100vw;
+  }
+}
+
+.aside-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100vh;
+  padding: 2rem;
+}
+.aside-menu_logo-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.aside-menu_logo-box--logo {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.aside-menu_logo-box--logo span {
+  font-weight: 700;
+}

@@ -1,0 +1,9 @@
+.footer {
+  margin-top: auto;
+  background-color: var(--background);
+  padding: 1rem;
+}
+.footer_text {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}

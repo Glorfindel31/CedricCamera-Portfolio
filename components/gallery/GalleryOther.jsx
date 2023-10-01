@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import {getData, shuffle} from '@/utils/gallery-data';
 import CloudinaryImage from '@/components/Cloudinary-image';
 import ImageModal from '@/components/ui/imageModal';
+import style from './Gallery.module.css';
 
 export default function GalleryOther({filter}) {
   const [initialData, setInitialData] = useState(null);
@@ -38,9 +39,9 @@ export default function GalleryOther({filter}) {
     return initialData.data.filter((data, idx) => idx % MAX_COLUMNs === colIndex);
   }
   return (
-    <main className="ml-[20%] grid grid-cols-3 gap-2 p-4 pr-10">
+    <main className={style.gallery}>
       {[getColumns(0), getColumns(1), getColumns(2)].map((column, idx) => (
-        <div key={idx} className="flex flex-col space-y-2">
+        <div key={idx} className={style['gallery--column']}>
           {column.map((data, index) => (
             <CloudinaryImage
               onClick={() => handleImageClick(data)}

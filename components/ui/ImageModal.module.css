@@ -1,0 +1,49 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0px;
+  z-index: 50;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  backdrop-filter: blur(4px);
+}
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: hsl(var(--background));
+  opacity: 0.6;
+}
+.modal__popbox {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+  background-color: hsl(var(--background));
+  padding: 0.5;
+  z-index: 10;
+  box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  transition-duration: 200ms;
+  animation-duration: 200ms;
+  border-radius: var(--radius);
+  margin: auto;
+  border-width: 1rem;
+  border-color: hsl(var(--background));
+}
+.modal__popbox--image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal__popbox--image {
+  object-fit: contain;
+  max-height: 85vh;
+  width: auto;
+}
+.modal__popbox--button-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.modal__popbox--button-container button {
+  margin-top: 0.5rem;
+}

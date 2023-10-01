@@ -1,0 +1,16 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 1rem;
+  padding-right: 2rem;
+  margin-left: 20%;
+}
+.gallery--column {
+  display: flex;
+  flex-direction: column;
+}
+.gallery--column > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}

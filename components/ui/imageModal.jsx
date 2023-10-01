@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {CldImage} from 'next-cloudinary';
 import {Button} from './button';
+import style from './ImageModal.module.css';
 
 export default function ImageModal({show, onClose, ...props}) {
   useEffect(() => {
@@ -18,20 +19,15 @@ export default function ImageModal({show, onClose, ...props}) {
   }
 
   return ReactDOM.createPortal(
-    <div
-      onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm"
-    >
-      <div className="absolute inset-0 bg-white opacity-60"></div>
+    <div onClick={onClose} className={style.modal}>
+      <div className={style['modal__backdrop']}></div>
 
-      <div className="relative z-10 grid gap-2 border bg-background p-2 shadow-lg duration-200 rounded-lg m-auto">
-        <div className="flex justify-center items-center  border-2">
-          <CldImage {...props} className="object-contain max-h-[85vh] w-auto" />
+      <div className={style['modal__popbox']}>
+        <div className={style['modal__popbox--image-container']}>
+          <CldImage {...props} className={style['modal__popbox--image']} />
         </div>
-        <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
-          <Button onClick={onClose} className="mt-2">
-            X
-          </Button>
+        <div className={style['modal__popbox--button-container']}>
+          <Button onClick={onClose}>X</Button>
         </div>
       </div>
     </div>,
