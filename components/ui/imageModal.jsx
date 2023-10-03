@@ -2,7 +2,6 @@
 import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {CldImage} from 'next-cloudinary';
-import {Button} from './button';
 import style from './ImageModal.module.css';
 
 export default function ImageModal({show, onClose, ...props}) {
@@ -27,7 +26,9 @@ export default function ImageModal({show, onClose, ...props}) {
           <CldImage {...props} className={style['modal__popbox--image']} />
         </div>
         <div className={style['modal__popbox--button-container']}>
-          <Button onClick={onClose}>X</Button>
+          <button className={style.btn} onClick={onClose}>
+            X
+          </button>
         </div>
       </div>
     </div>,

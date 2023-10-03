@@ -12,23 +12,24 @@
 .modal__backdrop {
   position: absolute;
   inset: 0;
-  background-color: hsl(var(--background));
+  background-color: var(--background-color);
   opacity: 0.6;
 }
 .modal__popbox {
   position: relative;
   display: grid;
   gap: 0.5rem;
-  background-color: hsl(var(--background));
+  background-color: var(--background-color);
   padding: 0.5;
   z-index: 10;
-  box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -2px var(--background-color);
   transition-duration: 200ms;
   animation-duration: 200ms;
   border-radius: var(--radius);
+  border-color: var(--background-color);
   margin: auto;
   border-width: 1rem;
-  border-color: hsl(var(--background));
+  background-color: var(--background-color);
 }
 .modal__popbox--image-container {
   display: flex;
@@ -46,4 +47,20 @@
 }
 .modal__popbox--button-container button {
   margin-top: 0.5rem;
+}
+.btn {
+  height: 2rem;
+  width: 100%;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  transition: all 200ms ease-in-out;
+  text-align: center;
+  line-height: normal;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+}
+.btn:hover {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }

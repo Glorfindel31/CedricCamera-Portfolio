@@ -5,7 +5,7 @@
 .cld-image__over {
   position: absolute;
   inset: 0;
-  background-color: hsl(var(--background));
+  background-color: var(--background-color);
   opacity: 0;
 }
 .cld-image__over:hover {

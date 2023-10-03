@@ -2,7 +2,6 @@
 import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {CldImage} from 'next-cloudinary';
-import {Button} from './button';
 import style from './InfosModal.module.css';
 
 export default function InfosModal({show, onClose, ...props}) {
@@ -64,7 +63,9 @@ export default function InfosModal({show, onClose, ...props}) {
           </p>
         </section>
         <div className={style['button__box']}>
-          <Button onClick={onClose}>X</Button>
+          <button className={style.btn} onClick={onClose}>
+            X
+          </button>
         </div>
       </div>
     </div>,

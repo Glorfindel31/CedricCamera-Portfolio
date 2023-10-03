@@ -1,3 +1,6 @@
+.modal p {
+  color: var(--text-color);
+}
 .modal {
   display: flex;
   flex-direction: column;
@@ -8,33 +11,34 @@
   inset: 0;
   z-index: 50;
 }
+
 .modal__backdrop {
   position: absolute;
   inset: 0;
-  background-color: hsl(var(--background));
+  background-color: var(--background-color);
   opacity: 0.6;
 }
 .modal__popbox {
   position: relative;
   display: grid;
   gap: 0.5rem;
-  background-color: hsl(var(--background));
+  background-color: var(--background-color);
   padding: 0.5;
   z-index: 10;
-  box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -2px var(--text-color);
   transition-duration: 200ms;
   animation-duration: 200ms;
   border-radius: var(--radius);
   margin: auto;
   border-width: 1rem;
-  border-color: hsl(var(--background));
+  border-color: var(--background-color);
   height: 80vh;
   overflow: scroll;
 }
 .modal__popbox section {
   padding: 0.5rem;
-  width: 35rem;
-  color: hsl(var(--primary));
+  width: 50vw;
+  color: var(--background-color);
   text-align: justify;
 }
 .modal__popbox section > :not([hidden]) ~ :not([hidden]) {
@@ -52,4 +56,25 @@
   display: flex;
   flex-direction: column-reverse;
   padding-top: 0.5rem;
+}
+.btn {
+  height: 2rem;
+  width: 100%;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  transition: all 200ms ease-in-out;
+  text-align: center;
+  line-height: normal;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+}
+.btn:hover {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+@media screen and (max-width: 639px) {
+  .modal__popbox section {
+    width: 90vw;
+  }
 }

@@ -1,8 +1,24 @@
+'use client';
 import Link from 'next/link';
-import {Button, buttonVariants} from '../components/ui/button';
 import style from './Navigation.module.css';
+import {IconContext} from 'react-icons';
+import {BsFillMoonStarsFill} from 'react-icons/bs';
+import {BiSun} from 'react-icons/bi';
+import {useTheme} from 'next-themes';
 
-export default function Navigation({menuHeight, handleOpenModal, setSelectedGallery}) {
+export default function Navigation({
+  FooterComponent,
+  menuHeight,
+  handleOpenModal,
+  setSelectedGallery,
+}) {
+  const {theme, setTheme} = useTheme();
+
+  // Function to toggle the theme
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
     <nav
       style={{
@@ -11,48 +27,68 @@ export default function Navigation({menuHeight, handleOpenModal, setSelectedGall
       }}
       className={style.navigation}
     >
-      <hr></hr>{' '}
       <ul className="pl-2">
         <li>
-          <Button variant="ghost" onClick={() => setSelectedGallery('all')}>
+          <div>
+            <IconContext.Provider value={{className: style.icon}}>
+              <input
+                type="checkbox"
+                className={style.checkbox}
+                id="checkbox"
+                checked={theme === 'dark'}
+                onChange={toggleTheme}
+              />
+              <label htmlFor="checkbox" className={style['checkbox-label']}>
+                <i>
+                  <BsFillMoonStarsFill />
+                </i>
+                <i>
+                  <BiSun />
+                </i>
+                <span className={style.ball}></span>
+              </label>
+            </IconContext.Provider>
+          </div>
+        </li>
+        <li>
+          <button className={style.btn} onClick={() => setSelectedGallery('all')}>
             All Images
-          </Button>
+          </button>
         </li>
         <li>
-          <Button variant="ghost" onClick={() => setSelectedGallery('digiCo')}>
+          <button className={style.btn} onClick={() => setSelectedGallery('digiCo')}>
             Digital/Commercial
-          </Button>
+          </button>
         </li>
         <li>
-          <Button variant="ghost" onClick={() => setSelectedGallery('digiOth')}>
+          <button className={style.btn} onClick={() => setSelectedGallery('digiOth')}>
             Digital/Other
-          </Button>
+          </button>
         </li>
         <li>
-          <Button variant="ghost" onClick={() => setSelectedGallery('anaCo')}>
+          <button className={style.btn} onClick={() => setSelectedGallery('anaCo')}>
             Analogue/Commercial
-          </Button>
+          </button>
         </li>
         <li>
-          <Button variant="ghost" onClick={() => setSelectedGallery('anaOth')}>
+          <button className={style.btn} onClick={() => setSelectedGallery('anaOth')}>
             Analogue/Other
-          </Button>
+          </button>
         </li>
         <li>
-          <Link
-            className={buttonVariants({variant: 'ghost'})}
-            href="https://www.instagram.com/cedriccamera/"
-            target="_blank"
-          >
-            Instagram
-          </Link>
+          <button className={style.btn}>
+            <Link href="https://www.instagram.com/cedriccamera/" target="_blank">
+              Instagram
+            </Link>
+          </button>
         </li>
         <li>
-          <Button variant="ghost" onClick={handleOpenModal}>
+          <button className={style.btn} onClick={handleOpenModal}>
             Infos
-          </Button>
+          </button>
         </li>
       </ul>
+      {FooterComponent && <FooterComponent />}
     </nav>
   );
 }
