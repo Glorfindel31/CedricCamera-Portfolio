@@ -1,5 +1,5 @@
 export async function getData() {
-  const result = await fetch(process.env.SEARCH_API_URL, {
+  const result = await fetch('/searchapi', {
     cache: 'no-cache',
   });
 
