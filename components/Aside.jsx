@@ -8,7 +8,7 @@ import style from './Aside.module.css';
 
 export default function Aside({setSelectedGallery}) {
   const [showModal, setShowModal] = useState(false);
-  const [menuHeight, setMenuHeight] = useState('1px');
+  const [menuHeight, setMenuHeight] = useState('0px');
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth <= 639 : false,
   );

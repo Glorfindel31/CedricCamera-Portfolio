@@ -17,8 +17,30 @@
   --accent-color: #c72f1b;
   --text-color: white;
 }
-
+html {
+  font-size: 16px;
+}
 body {
   background-color: var(--background-color);
   color: var(--text-color);
+}
+.hamburger-color {
+  color: var(--text-color);
+  background-color: var(--text-color);
+}
+
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 900px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 639px) {
+  html {
+    font-size: 14px;
+  }
 }

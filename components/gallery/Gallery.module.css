@@ -2,25 +2,44 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.5rem;
   padding-right: 2rem;
 }
 .gallery--column {
+  gap: 0.5rem;
   display: flex;
   flex-direction: column;
 }
-.gallery--column > :not([hidden]) ~ :not([hidden]) {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+
 @media screen and (max-width: 639px) {
   .gallery {
     gap: 1px;
     padding-right: 0;
-    padding: 3px;
+    padding: 5px;
   }
-  .gallery--column > :not([hidden]) ~ :not([hidden]) {
-    margin-top: 1px;
-    margin-bottom: 1px;
+  .gallery--column {
+    gap: 1px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .gallery {
+    gap: 2px;
+    padding-right: 0;
+    padding: 5px;
+  }
+  .gallery--column {
+    gap: 2px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .gallery {
+    gap: 2px;
+    padding-right: 0;
+    padding: 5px;
+  }
+  .gallery--column {
+    gap: 2px;
   }
 }
