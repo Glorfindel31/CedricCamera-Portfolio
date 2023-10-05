@@ -1,0 +1,16 @@
+.btn-up {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 9999; /* any large number to ensure it's on top */
+  margin: 1rem;
+  transition: all 200ms ease-in-out;
+}
+.icon {
+  height: 5rem;
+  width: 5rem;
+}
+.icon-box {
+  color: var(--text-color);
+  opacity: 70%;
+}

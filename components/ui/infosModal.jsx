@@ -64,7 +64,7 @@ export default function InfosModal({show, onClose, ...props}) {
         </section>
         <div className={style['button__box']}>
           <button className={style.btn} onClick={onClose}>
-            X
+            Close
           </button>
         </div>
       </div>

@@ -9,6 +9,7 @@
   width: 75vw;
   display: flex;
 }
+
 @media screen and (max-width: 639px) {
   .page-container {
     transition: all 1s ease-in-out;

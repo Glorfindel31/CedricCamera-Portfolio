@@ -30,6 +30,8 @@
   margin: auto;
   border-width: 1rem;
   background-color: var(--background-color);
+  min-width: 50svh;
+  min-height: 50svh;
 }
 .modal__popbox--image-container {
   display: flex;

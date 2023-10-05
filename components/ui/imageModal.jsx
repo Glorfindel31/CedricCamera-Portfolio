@@ -27,7 +27,7 @@ export default function ImageModal({show, onClose, ...props}) {
         </div>
         <div className={style['modal__popbox--button-container']}>
           <button className={style.btn} onClick={onClose}>
-            X
+            Close
           </button>
         </div>
       </div>
