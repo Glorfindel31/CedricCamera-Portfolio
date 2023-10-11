@@ -41,11 +41,15 @@ export default function GalleryAll() {
             <CloudinaryImage
               onClick={() => handleImageClick(data)}
               key={data.public_id}
-              src={data.public_id}
+              src={'http://res.cloudinary.com/dduwp6ob6/image/upload/'}
+              asset={data.public_id}
+              quality={70}
+              maxsize={1200}
               height={data.height}
               width={data.width}
-              alt={data.public_id}
-              format={'webp'}
+              alt={data.etag}
+              formatchange={'webp'}
+              format={data.format}
               folder={data.folder}
             />
           ))}
