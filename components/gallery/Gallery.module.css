@@ -4,6 +4,7 @@
   gap: 0.5rem;
   padding: 0.5rem;
   padding-right: 2rem;
+  margin-left: 25vw;
 }
 .gallery--column {
   gap: 0.5rem;
@@ -15,7 +16,8 @@
   .gallery {
     gap: 1px;
     padding-right: 0;
-    padding: 5px;
+    padding: 0 5px;
+    margin: 0;
   }
   .gallery--column {
     gap: 1px;

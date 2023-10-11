@@ -2,11 +2,8 @@
   display: flex;
   flex-direction: row;
   background-color: var(--background);
-  height: 100vh;
-  width: 100vw;
 }
 .gallery {
-  width: 75vw;
   display: flex;
 }
 

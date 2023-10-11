@@ -49,7 +49,7 @@ export default function Aside({setSelectedGallery}) {
         />
       ) : (
         <Navigation
-          menuHeight={'20rem'}
+          menuHeight={'25rem'}
           handleOpenModal={handleOpenModal}
           setSelectedGallery={setSelectedGallery}
         />
