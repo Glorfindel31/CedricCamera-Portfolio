@@ -9,6 +9,7 @@
   --background-color: white;
   --accent-color: #c72f1b;
   --text-color: #131715;
+  --text-color-transparent: #13171550;
 }
 
 /* styles-dark.css */
@@ -16,6 +17,7 @@
   --background-color: #131715;
   --accent-color: #c72f1b;
   --text-color: white;
+  --text-color-transparent: #ffffff50;
 }
 html {
   font-size: 16px;

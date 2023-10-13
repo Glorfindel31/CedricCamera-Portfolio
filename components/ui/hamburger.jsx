@@ -1,37 +1,37 @@
 import {useState} from 'react';
+import styles from './hamburger.module.css';
 
 export default function Hamburger({menuHeight, setMenuHeight}) {
   const [isOpen, setIsOpen] = useState(false);
-  const genericHamburgerLine = `h-1 w-8 my-1 rounded-full hamburger-color transition ease transform duration-300`;
+
   const toggleMenu = () => {
-    setMenuHeight(menuHeight === '25rem' ? '0px' : '25rem');
-    setIsOpen(!isOpen);
+    setMenuHeight(prevHeight => (prevHeight === '25rem' ? '0px' : '25rem'));
+    setIsOpen(prevIsOpen => !prevIsOpen);
   };
 
+  const lineStyles = [
+    {
+      isOpen: styles.rotate45,
+      isClosed: styles.translate0,
+    },
+    {
+      isOpen: styles.opacity0,
+      isClosed: styles.translate0,
+    },
+    {
+      isOpen: styles.rotateMinus45,
+      isClosed: styles.translate0,
+    },
+  ];
+
   return (
-    <button
-      className="flex flex-col h-10 w-10 rounded justify-center items-center group"
-      onClick={toggleMenu}
-    >
-      <div
-        className={`${genericHamburgerLine} ${
-          isOpen
-            ? 'rotate-45 translate-y-3 opacity-50 group-hover:opacity-100'
-            : 'opacity-50 group-hover:opacity-100'
-        }`}
-      />
-      <div
-        className={`${genericHamburgerLine} ${
-          isOpen ? 'opacity-0' : 'opacity-50 group-hover:opacity-100'
-        }`}
-      />
-      <div
-        className={`${genericHamburgerLine} ${
-          isOpen
-            ? '-rotate-45 -translate-y-3 opacity-50 group-hover:opacity-100'
-            : 'opacity-50 group-hover:opacity-100'
-        }`}
-      />
+    <button className={styles.button} onClick={toggleMenu}>
+      {lineStyles.map((style, index) => (
+        <div
+          key={index}
+          className={`${styles.hamburgerLine} ${isOpen ? style.isOpen : style.isClosed}`}
+        />
+      ))}
     </button>
   );
 }

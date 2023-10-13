@@ -17,6 +17,10 @@
   border-top: 1px solid var(--text-color);
   border-bottom: 1px solid var(--text-color);
 }
+.selected {
+  color: var(--accent-color);
+  font-weight: 600;
+}
 .checkbox {
   box-sizing: border-box;
   opacity: 0;

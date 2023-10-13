@@ -1,8 +1,8 @@
 'use client';
 import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import {CldImage} from 'next-cloudinary';
 import style from './ImageModal.module.css';
+import Image from 'next/image';
 
 export default function ImageModal({show, onClose, ...props}) {
   useEffect(() => {
@@ -23,7 +23,15 @@ export default function ImageModal({show, onClose, ...props}) {
 
       <div className={style['modal__popbox']}>
         <div className={style['modal__popbox--image-container']}>
-          <CldImage {...props} className={style['modal__popbox--image']} />
+          <Image
+            className={style['modal__popbox--image']}
+            onLoadingComplete={image => image.classList.remove('opacity-0')}
+            src={`${props.src}c_scale,h_${props.maxsize}/f_${props.formatchange}/q_${props.quality}/${props.asset}.${props.format}`}
+            height={props.height}
+            width={props.width}
+            alt={props.alt}
+            priority={true}
+          />
         </div>
         <div className={style['modal__popbox--button-container']}>
           <button className={style.btn} onClick={onClose}>

@@ -5,8 +5,9 @@ import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import Hamburger from './ui/hamburger';
 import style from './Aside.module.css';
+import {Filter} from 'lucide-react';
 
-export default function Aside({setSelectedGallery}) {
+export default function Aside({setSelectedGallery, selectedGallery}) {
   const [showModal, setShowModal] = useState(false);
   const [menuHeight, setMenuHeight] = useState('0px');
   const [isMobile, setIsMobile] = useState(
@@ -46,12 +47,14 @@ export default function Aside({setSelectedGallery}) {
           handleOpenModal={handleOpenModal}
           setSelectedGallery={setSelectedGallery}
           FooterComponent={Footer}
+          currentGallery={selectedGallery}
         />
       ) : (
         <Navigation
           menuHeight={'25rem'}
           handleOpenModal={handleOpenModal}
           setSelectedGallery={setSelectedGallery}
+          currentGallery={selectedGallery}
         />
       )}
       {!isMobile && <Footer />}

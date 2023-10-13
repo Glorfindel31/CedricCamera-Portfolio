@@ -4,13 +4,14 @@ export async function getData() {
   });
 
   if (!result.ok) {
-    throw new Error('Failed to fetch');
+    throw new Error(`Failed to fetch: ${result.status} ${result.statusText}`);
   }
   return result.json();
 }
 
 //shuffle function to display different images
-export function shuffle(array) {
+export function shuffle(originalArray) {
+  let array = [...originalArray];
   let currentIndex = array.length,
     randomIndex;
 

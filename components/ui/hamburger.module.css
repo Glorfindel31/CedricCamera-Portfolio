@@ -1,0 +1,42 @@
+.hamburgerLine {
+  height: 0.3rem;
+  width: 2rem;
+  border-radius: 9999px;
+  background-color: var(--text-color);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.rotate45 {
+  transform: translateY(0.67rem) rotate(45deg);
+  opacity: 0.5;
+}
+
+.rotateMinus45 {
+  transform: translateY(-0.67rem) rotate(-45deg);
+  opacity: 0.5;
+}
+
+.translate0 {
+  transform: rotate(0deg);
+  opacity: 0.5;
+}
+
+.opacity0 {
+  opacity: 0;
+}
+
+.groupHover {
+  transition: opacity 0.3s ease;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 15%;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid var(--text-color-transparent);
+}

@@ -11,12 +11,21 @@ export default function Navigation({
   menuHeight,
   handleOpenModal,
   setSelectedGallery,
+  currentGallery,
 }) {
   const {theme, setTheme} = useTheme();
 
   // Function to toggle the theme
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  const galleryTypes = {
+    all: 'All Images',
+    digiCo: 'Digital/Commercial',
+    digiOth: 'Digital/Other',
+    anaCo: 'Analogue/Commercial',
+    anaOth: 'Analogue/Other',
   };
 
   return (
@@ -50,31 +59,16 @@ export default function Navigation({
             </IconContext.Provider>
           </div>
         </li>
-        <li>
-          <button className={style.btn} onClick={() => setSelectedGallery('all')}>
-            All Images
-          </button>
-        </li>
-        <li>
-          <button className={style.btn} onClick={() => setSelectedGallery('digiCo')}>
-            Digital/Commercial
-          </button>
-        </li>
-        <li>
-          <button className={style.btn} onClick={() => setSelectedGallery('digiOth')}>
-            Digital/Other
-          </button>
-        </li>
-        <li>
-          <button className={style.btn} onClick={() => setSelectedGallery('anaCo')}>
-            Analogue/Commercial
-          </button>
-        </li>
-        <li>
-          <button className={style.btn} onClick={() => setSelectedGallery('anaOth')}>
-            Analogue/Other
-          </button>
-        </li>
+        {Object.entries(galleryTypes).map(([type, label]) => (
+          <li key={type}>
+            <button
+              className={`${style.btn} ${currentGallery === type ? style.selected : ''}`}
+              onClick={() => setSelectedGallery(type)}
+            >
+              {label}
+            </button>
+          </li>
+        ))}
         <li>
           <button className={style.btn}>
             <Link href="https://www.instagram.com/cedriccamera/" target="_blank">

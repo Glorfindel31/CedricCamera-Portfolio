@@ -1,30 +1,42 @@
 'use client';
 import {useState, useEffect} from 'react';
 import {getData, shuffle} from '@/utils/gallery-data';
-import CloudinaryImage from '@/components/Cloudinary-image';
-import ImageModal from '@/components/ui/imageModal';
+import CloudinaryImage from '../Cloudinary-image';
+import ImageModal from '../ui/imageModal';
 import style from './Gallery.module.css';
 
-export default function GalleryOther({filter}) {
+const BASE_IMAGE_URL = 'http://res.cloudinary.com/dduwp6ob6/image/upload/';
+
+export default function GalleryAll({filter}) {
   const [initialData, setInitialData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [currentImage, setCurrentImage] = useState({});
+  const [screenHeight, setScreenHeight] = useState(null);
+  const [screenWidth, setScreenWidth] = useState(null);
 
   //function to filter the data
   function chooseFolder(array, string) {
     return array.filter(data => data.folder === string);
   }
 
-  //data modification
   useEffect(() => {
-    getData().then(data => {
-      let filteredData = chooseFolder(data.data, filter);
+    const fetchData = async () => {
+      if (typeof window !== 'undefined') {
+        setScreenHeight(window.screen.availHeight);
+        setScreenWidth(window.screen.availWidth);
+      }
+
+      const data = await getData();
+      let filteredData = filter ? chooseFolder(data.data, filter) : data.data;
       let shuffledData = shuffle(filteredData);
       data.data = shuffledData;
       setInitialData(data);
-    });
+    };
+
+    fetchData();
   }, [filter]);
 
+  // This function will be called when an image is clicked
   const handleImageClick = imageData => {
     setCurrentImage(imageData);
     setShowModal(true);
@@ -32,42 +44,51 @@ export default function GalleryOther({filter}) {
 
   const MAX_COLUMNs = 3;
 
-  function getColumns(colIndex) {
+  const getColumns = colIndex => {
     if (!initialData || !initialData.data) {
       return [];
     }
     return initialData.data.filter((data, idx) => idx % MAX_COLUMNs === colIndex);
-  }
+  };
+
+  const getMaxHeight = () => Math.floor(screenHeight * 2);
+  const getMaxWidth = () => Math.floor((screenWidth * 0.75) / 1.5);
+
   return (
     <main className={style.gallery}>
       {[getColumns(0), getColumns(1), getColumns(2)].map((column, idx) => (
         <div key={idx} className={style['gallery--column']}>
           {column.map((data, index) => (
             <CloudinaryImage
-              onClick={() => handleImageClick(data)}
               key={data.public_id}
-              src={'http://res.cloudinary.com/dduwp6ob6/image/upload/'}
-              asset={data.public_id}
-              quality={70}
-              maxsize={1200}
-              height={data.height}
-              width={data.width}
+              onClick={() => handleImageClick(data)}
+              src={BASE_IMAGE_URL}
               alt={data.etag}
-              formatchange={'webp'}
+              asset={data.public_id}
               format={data.format}
               folder={data.folder}
+              quality={'auto:best'}
+              maxsize={getMaxWidth()}
+              height={data.height}
+              width={data.width}
+              formatchange={'auto'}
             />
           ))}
         </div>
       ))}
       <ImageModal
-        show={showModal}
-        src={currentImage.public_id}
         onClose={() => setShowModal(false)}
-        alt={currentImage.public_id}
-        format={'webp'}
+        show={showModal}
+        src={BASE_IMAGE_URL}
+        alt={currentImage.etag}
+        asset={currentImage.public_id}
+        format={currentImage.format}
+        folder={currentImage.folder}
+        quality={'auto:best'}
+        maxsize={getMaxHeight()}
         height={currentImage.height}
         width={currentImage.width}
+        formatchange={'auto'}
       />
     </main>
   );
