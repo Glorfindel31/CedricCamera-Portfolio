@@ -20,6 +20,7 @@
 .selected {
   color: var(--accent-color);
   font-weight: 600;
+  padding-left: 0.5rem;
 }
 .checkbox {
   box-sizing: border-box;

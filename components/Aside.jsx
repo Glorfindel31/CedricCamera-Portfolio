@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import Hamburger from './ui/hamburger';
 import style from './Aside.module.css';
-import {Filter} from 'lucide-react';
 
 export default function Aside({setSelectedGallery, selectedGallery}) {
   const [showModal, setShowModal] = useState(false);
