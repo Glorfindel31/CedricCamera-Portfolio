@@ -1,18 +1,20 @@
 'use client';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {getData, shuffle} from '@/utils/gallery-data';
-import CloudinaryImage from '../Cloudinary-image';
+import {GalleryContext} from '../../utils/contextProviderGallery';
+import CloudinaryImage from '../cloudinary-image';
 import ImageModal from '../ui/imageModal';
-import style from './Gallery.module.css';
+import style from './gallery.module.css';
 
 const BASE_IMAGE_URL = 'http://res.cloudinary.com/dduwp6ob6/image/upload/';
 
-export default function GalleryAll({filter}) {
+export default function GalleryAll() {
   const [initialData, setInitialData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [currentImage, setCurrentImage] = useState({});
   const [screenHeight, setScreenHeight] = useState(null);
   const [screenWidth, setScreenWidth] = useState(null);
+  const {selectedGallery, selectedFilter} = useContext(GalleryContext);
 
   //function to filter the data
   function chooseFolder(array, string) {
@@ -27,14 +29,16 @@ export default function GalleryAll({filter}) {
       }
 
       const data = await getData();
-      let filteredData = filter ? chooseFolder(data.data, filter) : data.data;
+      let filteredData = selectedFilter
+        ? chooseFolder(data.data, selectedFilter)
+        : data.data;
       let shuffledData = shuffle(filteredData);
       data.data = shuffledData;
       setInitialData(data);
     };
 
     fetchData();
-  }, [filter]);
+  }, [selectedFilter]);
 
   // This function will be called when an image is clicked
   const handleImageClick = imageData => {

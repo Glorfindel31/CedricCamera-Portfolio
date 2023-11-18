@@ -25,6 +25,32 @@ html {
 body {
   background-color: var(--background-color);
   color: var(--text-color);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: 17.942rem;
+  font-weight: 900;
+}
+h2 {
+  font-size: 11.089rem;
+  font-weight: 900;
+}
+h3 {
+  font-size: 6.854rem;
+  font-weight: 900;
+}
+h4 {
+  font-size: 4.236rem;
+  font-weight: 900;
+}
+h5 {
+  font-size: 2.618rem;
+  font-weight: 800;
+}
+h6 {
+  font-size: 1.618rem;
+  font-weight: 800;
 }
 .hamburger-color {
   color: var(--text-color);
@@ -39,17 +65,17 @@ img {
 }
 
 @media screen and (max-width: 1000px) {
-  html {
-    font-size: 12px;
+  body {
+    font-size: 0.9rem;
   }
 }
 @media screen and (max-width: 900px) {
-  html {
-    font-size: 10px;
+  body {
+    font-size: 0.6rem;
   }
 }
 @media screen and (max-width: 639px) {
-  html {
-    font-size: 14px;
+  body {
+    font-size: 0.9rem;
   }
 }

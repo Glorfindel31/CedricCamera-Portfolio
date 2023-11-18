@@ -2,6 +2,7 @@
   overflow: hidden;
 }
 .btn {
+  text-transform: capitalize;
   height: 2rem;
   width: 100%;
   background-color: var(--background-color);

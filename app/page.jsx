@@ -1,12 +1,12 @@
 'use client';
-import {useState} from 'react';
-import Gallery from '../components/gallery/Gallery';
-import Aside from '../components/Aside';
-import style from './Page.module.css';
+import {GalleryProvider} from '../utils/contextProviderGallery';
+import Gallery from '../components/gallery/gallery';
+import Aside from '../components/aside';
+import style from './page.module.css';
 import BtnUpPage from '../components/ui/btnUpPage';
 
-const galleryFilters = {
-  all: null,
+const menuItems = {
+  all: 'all',
   digiCo: 'digital/comercial',
   digiOth: 'digital/others',
   anaCo: 'film/comercial',
@@ -14,14 +14,15 @@ const galleryFilters = {
 };
 
 export default function Home() {
-  const [selectedGallery, setSelectedGallery] = useState('all');
   return (
-    <div className={style['page-container']}>
-      <BtnUpPage />
-      <Aside selectedGallery={selectedGallery} setSelectedGallery={setSelectedGallery} />
-      <div className={style.gallery}>
-        <Gallery filter={galleryFilters[selectedGallery]} />
+    <GalleryProvider>
+      <div className={style['page-container']}>
+        <BtnUpPage />
+        <Aside navBar={menuItems} />
+        <div className={style.gallery}>
+          <Gallery />
+        </div>
       </div>
-    </div>
+    </GalleryProvider>
   );
 }

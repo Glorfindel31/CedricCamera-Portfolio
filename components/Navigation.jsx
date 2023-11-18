@@ -1,12 +1,13 @@
 'use client';
 import Link from 'next/link';
-import style from './Navigation.module.css';
+import style from './navigation.module.css';
 import {IconContext} from 'react-icons';
 import {BsFillMoonStarsFill} from 'react-icons/bs';
 import {BiSun} from 'react-icons/bi';
 import {useTheme} from 'next-themes';
 
 export default function Navigation({
+  navBar,
   FooterComponent,
   menuHeight,
   handleOpenModal,
@@ -18,14 +19,6 @@ export default function Navigation({
   // Function to toggle the theme
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
-  const galleryTypes = {
-    all: 'All Images',
-    digiCo: 'Digital/Commercial',
-    digiOth: 'Digital/Other',
-    anaCo: 'Analogue/Commercial',
-    anaOth: 'Analogue/Other',
   };
 
   return (
@@ -59,16 +52,26 @@ export default function Navigation({
             </IconContext.Provider>
           </div>
         </li>
-        {Object.entries(galleryTypes).map(([type, label]) => (
-          <li key={type}>
-            <button
-              className={`${style.btn} ${currentGallery === type ? style.selected : ''}`}
-              onClick={() => setSelectedGallery(type)}
-            >
-              {label}
-            </button>
-          </li>
-        ))}
+        {navBar &&
+          Object.entries(navBar).map(([type, label]) => (
+            <li key={type}>
+              <button
+                className={`${style.btn} ${
+                  currentGallery === type ? style.selected : ''
+                }`}
+                onClick={() => setSelectedGallery(type)}
+              >
+                {label}
+              </button>
+            </li>
+          ))}
+        <li>
+          <button className={style.btn}>
+            <Link href="/prints" target="_blank">
+              Prints
+            </Link>
+          </button>
+        </li>
         <li>
           <button className={style.btn}>
             <Link href="https://www.instagram.com/cedriccamera/" target="_blank">

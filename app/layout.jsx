@@ -1,11 +1,9 @@
-import './globals.css';
-import 'tailwindcss/tailwind.css';
 import {Inter} from 'next/font/google';
 import {Providers} from './providers';
 import Head from 'next/head';
 import GoogleAnalytics from '@/utils/google-analytics';
-
-const inter = Inter({subsets: ['latin']});
+import 'tailwindcss/tailwind.css';
+import './globals.css';
 
 export const metadata = {
   title: 'Cedric Florentin | Portfolio',
@@ -31,7 +29,7 @@ export default function RootLayout({children}) {
         <meta property="og:url" content="https://cedriccamera.netlify.app/" />
         <meta property="og:type" content="website" />
       </Head>
-      <body className={inter.className}>
+      <body>
         <GoogleAnalytics />
         <Providers>{children}</Providers>
       </body>

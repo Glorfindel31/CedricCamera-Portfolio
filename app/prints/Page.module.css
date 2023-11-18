@@ -5,19 +5,18 @@
 }
 .gallery {
   display: flex;
+  margin-left: 25vw;
 }
 
 @media screen and (max-width: 639px) {
   .page-container {
     transition: all 1s ease-in-out;
     width: 100vw;
-    width: 100dvw;
     display: flex;
     flex-direction: column !important;
   }
   .gallery {
     transition: all 1s ease-in-out;
     width: 100vw;
-    width: 100dvw;
   }
 }

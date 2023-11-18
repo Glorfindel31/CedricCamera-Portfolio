@@ -16,11 +16,24 @@
   margin-bottom: 2rem;
 }
 .aside-menu_logo-box--logo {
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 2rem;
 }
 .aside-menu_logo-box--logo span {
-  font-weight: 700;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 1000px) {
+  .aside-menu_logo-box--logo {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  .aside-menu_logo-box--logo {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
 }
 @media screen and (max-width: 639px) {
   .aside-menu {
@@ -28,5 +41,9 @@
     width: 100%;
     height: auto;
     position: relative;
+  }
+  .aside-menu_logo-box--logo {
+    font-size: 2rem;
+    line-height: 2rem;
   }
 }

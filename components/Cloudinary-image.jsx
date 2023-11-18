@@ -1,5 +1,5 @@
 'use client';
-import style from './CloudinaryImage.module.css';
+import style from './cloudinaryImage.module.css';
 import Image from 'next/image';
 
 export default function CloudinaryImage({onClick, ...props}) {
@@ -9,8 +9,8 @@ export default function CloudinaryImage({onClick, ...props}) {
         className="transition-opacity opacity-0 duration-1000"
         onLoadingComplete={image => image.classList.remove('opacity-0')}
         src={`${props.src}c_scale,w_${props.maxsize}/f_${props.formatchange}/q_${props.quality}/${props.asset}.${props.format}`}
-        height={props.height}
-        width={props.width}
+        height={props.height / 2}
+        width={props.width / 2}
         alt={`This is an image of ${props.alt}`}
       />
       <div className={style['cld-image__over']}></div>
