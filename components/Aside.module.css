@@ -1,47 +1,52 @@
 .aside-menu {
   display: flex;
   flex-direction: column;
-  width: 25vw;
-  height: 100svh;
-  height: 100vh;
-  padding: 2rem;
-  position: fixed;
+  width: 100%;
+  height: auto;
+  padding: 2rem 2rem 0rem 2rem;
+  position: relative;
   top: 0;
   left: 0;
 }
+
 .aside-menu_logo-box {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 2rem;
 }
+
 .aside-menu_logo-box--logo {
-  font-size: 2rem;
-  line-height: 2rem;
+  font-size: 3rem;
+  line-height: 3rem;
 }
+
 .aside-menu_logo-box--logo span {
   font-weight: 900;
 }
 
-@media screen and (max-width: 1000px) {
-  .aside-menu_logo-box--logo {
-    font-size: 1.2rem;
-    line-height: 2rem;
+@media screen and (min-width: 640px) {
+  .aside-menu {
+    width: 25vw;
+    height: 100vh;
+    padding: 2rem;
+    position: fixed;
   }
-}
-@media screen and (max-width: 900px) {
+
   .aside-menu_logo-box--logo {
     font-size: 1rem;
     line-height: 2rem;
   }
 }
-@media screen and (max-width: 639px) {
-  .aside-menu {
-    padding: 2rem 2rem 0rem 2rem;
-    width: 100%;
-    height: auto;
-    position: relative;
+
+@media screen and (min-width: 900px) {
+  .aside-menu_logo-box--logo {
+    font-size: 1.2rem;
+    line-height: 2rem;
   }
+}
+
+@media screen and (min-width: 1000px) {
   .aside-menu_logo-box--logo {
     font-size: 2rem;
     line-height: 2rem;

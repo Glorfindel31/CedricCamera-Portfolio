@@ -28,13 +28,65 @@ export default function PrintPage() {
           </p>
         </div>
         <div className={style.gallery}>
-          <div className={style['img-container']}>
-            <Image
-              src="https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/v1/film/others/iez7137l6z87mbyelpkv"
-              alt="prints-1"
-              fill
-              style={{objectFit: 'cover', objectPosition: 'center'}}
-            />
+          <div className={style.card}>
+            <div className={style['card-header']}>
+              <h5 className={style['card-title']}>Title</h5>
+              <p className={style['card-description']}>Description</p>
+            </div>
+            <div className={style['img-container']}>
+              <Image
+                src="https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/v1/film/others/iez7137l6z87mbyelpkv"
+                alt="prints-1"
+                width={500} // replace with your image's width
+                height={500} // replace with your image's height
+              />
+            </div>
+            <button className={style['card-btn']}>SELECT</button>
+          </div>
+          <div className={style.card}>
+            <div className={style['card-header']}>
+              <h5 className={style['card-title']}>Title</h5>
+              <p className={style['card-description']}>Description</p>
+            </div>
+            <div className={style['img-container']}>
+              <Image
+                src="https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/v1/digital/others/gvhzi4mnle0drtrf91ru"
+                alt="prints-1"
+                width={500} // replace with your image's width
+                height={500} // replace with your image's height
+              />
+            </div>
+            <button className={style['card-btn']}>SELECT</button>
+          </div>
+          <div className={style.card}>
+            <div className={style['card-header']}>
+              <h5 className={style['card-title']}>Title</h5>
+              <p className={style['card-description']}>Description</p>
+            </div>
+            <div className={style['img-container']}>
+              <Image
+                src="https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/v1/digital/others/mna1ngaphptaymrepiyb"
+                alt="prints-1"
+                width={500} // replace with your image's width
+                height={500} // replace with your image's height
+              />
+            </div>
+            <button className={style['card-btn']}>SELECT</button>
+          </div>
+          <div className={style.card}>
+            <div className={style['card-header']}>
+              <h5 className={style['card-title']}>Title</h5>
+              <p className={style['card-description']}>Description</p>
+            </div>
+            <div className={style['img-container']}>
+              <Image
+                src="https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/v1/film/others/bgpduuhqgasifxitayk8"
+                alt="prints-1"
+                width={500} // replace with your image's width
+                height={500} // replace with your image's height
+              />
+            </div>
+            <button className={style['card-btn']}>SELECT</button>
           </div>
         </div>
       </div>

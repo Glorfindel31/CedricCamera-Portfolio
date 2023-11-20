@@ -24,8 +24,9 @@ export default function Navigation({
   return (
     <nav
       style={{
-        height: menuHeight,
-        transition: 'all 1s cubic-bezier(0.24, 0.06, 0.05, 0.95)',
+        maxHeight: menuHeight,
+        overflow: 'hidden',
+        transition: 'max-height 0.4s ease-in-out',
       }}
       className={style.navigation}
     >

@@ -1,4 +1,4 @@
-// Importing necessary libraries and components
+'use client';
 import React, {useState, useEffect, useContext} from 'react';
 import {GalleryContext} from '../utils/contextProviderGallery';
 import InfosModal from './ui/infosModal';

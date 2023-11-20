@@ -25,14 +25,14 @@ function createResponse(data, status = 200) {
 export async function GET() {
   try {
     const initialResult = await cloudinary.v2.search
-      .expression('resource_type:image')
+      .expression('resource_type:image AND tags=prints')
       .max_results(1)
       .execute();
 
     const totalCount = initialResult.total_count;
 
     const result = await cloudinary.v2.search
-      .expression('resource_type:image')
+      .expression('resource_type:image AND tags=prints')
       .max_results(totalCount)
       .execute();
 
