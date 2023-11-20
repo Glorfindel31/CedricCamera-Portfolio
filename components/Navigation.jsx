@@ -67,9 +67,7 @@ export default function Navigation({
           ))}
         <li>
           <button className={style.btn}>
-            <Link href="/prints" target="_blank">
-              Prints
-            </Link>
+            <Link href="/prints">Prints</Link>
           </button>
         </li>
         <li>

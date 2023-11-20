@@ -64,7 +64,7 @@ export default function GalleryAll() {
         <div key={idx} className={style['gallery--column']}>
           {column.map((data, index) => (
             <CloudinaryImage
-              key={data.public_id}
+              key={data.public_id + index}
               onClick={() => handleImageClick(data)}
               src={BASE_IMAGE_URL}
               alt={data.etag}
