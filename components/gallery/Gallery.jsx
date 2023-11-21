@@ -1,15 +1,22 @@
 'use client';
+// Import necessary hooks and utilities
 import {useState, useEffect, useContext, useCallback} from 'react';
 import {getData, shuffle} from '@/utils/gallery-data';
 import {GalleryContext} from '../../utils/contextProviderGallery';
+
+// Import components
 import CloudinaryImage from '../cloudinary-image';
 import ImageModal from '../ui/imageModal';
+
+// Import styles
 import style from './gallery.module.css';
 
+// Constants
 const BASE_IMAGE_URL = 'http://res.cloudinary.com/dduwp6ob6/image/upload/';
 const DEFAULT_COLUMNS = 4;
 
 export default function GalleryAll() {
+  // State variables
   const [initialData, setInitialData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [currentImage, setCurrentImage] = useState({});
@@ -19,16 +26,20 @@ export default function GalleryAll() {
   const [numColumns, setNumColumns] = useState(DEFAULT_COLUMNS);
   const [columnData, setColumnData] = useState([]);
 
+  // Function to filter data based on folder
   const chooseFolder = useCallback((array, string) => {
     return array.filter(data => data.folder === string);
   }, []);
 
+  // Function to fetch data
   const fetchData = useCallback(async () => {
+    // Set screen dimensions
     if (typeof window !== 'undefined') {
       setScreenHeight(window.screen.availHeight);
       setScreenWidth(window.screen.availWidth);
     }
 
+    // Fetch and process data
     const data = await getData();
     let filteredData = selectedFilter
       ? chooseFolder(data.data, selectedFilter)
@@ -38,10 +49,12 @@ export default function GalleryAll() {
     setInitialData(data);
   }, [selectedFilter, chooseFolder]);
 
+  // Fetch data on component mount
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
+  // Distribute images among columns
   useEffect(() => {
     if (!initialData || !initialData.data) {
       setColumnData([]);
@@ -60,11 +73,13 @@ export default function GalleryAll() {
     setColumnData(newColumnData);
   }, [initialData, numColumns]);
 
+  // Function to handle image click
   const handleImageClick = useCallback(imageData => {
     setCurrentImage(imageData);
     setShowModal(true);
   }, []);
 
+  // Function to handle screen resize
   const handleResize = useCallback(() => {
     if (window.innerWidth > 1000) {
       setNumColumns(4);
@@ -75,6 +90,7 @@ export default function GalleryAll() {
     }
   }, []);
 
+  // Handle screen resize
   useEffect(() => {
     window.addEventListener('resize', handleResize);
     handleResize(); // Call handleResize immediately after component is mounted
@@ -83,11 +99,14 @@ export default function GalleryAll() {
     };
   }, [handleResize]);
 
+  // Functions to get max height and width
   const getMaxHeight = useCallback(() => Math.floor(screenHeight * 2), [screenHeight]);
   const getMaxWidth = useCallback(
     () => Math.floor((screenWidth * 0.75) / 1.5),
     [screenWidth],
   );
+
+  // Render
   return (
     <main className={style.gallery}>
       {columnData.map((column, idx) => (

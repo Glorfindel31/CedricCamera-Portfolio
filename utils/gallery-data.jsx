@@ -27,3 +27,13 @@ export function shuffle(originalArray) {
 
   return array;
 }
+
+export async function getPrintingData() {
+  const result = await fetch('/searchapiTagged', {
+    cache: 'no-cache',
+  });
+  if (!result.ok) {
+    throw new Error(`Failed to fetch: ${result.status} ${result.statusText}`);
+  }
+  return result.json();
+}

@@ -1,17 +1,64 @@
 'use client';
-import Image from 'next/image';
+import {getPrintingData} from '../../utils/gallery-data';
+import {useState, useCallback, useEffect} from 'react';
 import Aside from '../../components/aside';
 import style from './Page.module.css';
 import BtnUpPage from '../../components/ui/btnUpPage';
+import Card from '../../components/ui/card';
 
 const menuItems = {
   Price: 'Price List',
   Request: 'Request a Quote',
 };
 
+const DEFAULT_COLUMNS = 4;
+
 export default function PrintPage() {
+  const [initialData, setInitialData] = useState(null);
+  const [numColumns, setNumColumns] = useState(DEFAULT_COLUMNS);
+  const [columnData, setColumnData] = useState([]);
+
+  const fetchData = useCallback(async () => {
+    const response = await getPrintingData();
+    setInitialData(response);
+  }, []);
+
+  const handleResize = useCallback(() => {
+    if (window.innerWidth > 1000) {
+      setNumColumns(4);
+    } else if (window.innerWidth <= 1000 && window.innerWidth > 639) {
+      setNumColumns(3);
+    } else {
+      setNumColumns(2);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [fetchData, handleResize]);
+
+  useEffect(() => {
+    if (!initialData || !initialData.data) {
+      setColumnData([]);
+      return;
+    }
+    const newColumnData = Array.from({length: numColumns}, () => []);
+    initialData.data.forEach((data, idx) => {
+      const colIndex = idx % numColumns;
+      newColumnData[colIndex].push(data);
+    });
+
+    setColumnData(newColumnData);
+  }, [initialData, numColumns]);
+
   return (
-    <div className={style['page-container']}>
+    <main className={style['page-container']}>
       <BtnUpPage />
       <Aside navBar={menuItems} />
       <div className={style['main-container']}>
@@ -27,69 +74,22 @@ export default function PrintPage() {
             </span>
           </p>
         </div>
-        <div className={style.gallery}>
-          <div className={style.card}>
-            <div className={style['card-header']}>
-              <h5 className={style['card-title']}>Title</h5>
-              <p className={style['card-description']}>Description</p>
+        <div className={style.list}>
+          {columnData.map((column, idx) => (
+            <div key={idx} className={style['list-column']}>
+              {column.map(data => (
+                <Card
+                  key={data.public_id}
+                  src={data.secure_url}
+                  alt={data.filename}
+                  title={data.filename}
+                  description={data.filename}
+                />
+              ))}
             </div>
-            <div className={style['img-container']}>
-              <Image
-                src="https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/v1/film/others/iez7137l6z87mbyelpkv"
-                alt="prints-1"
-                width={500} // replace with your image's width
-                height={500} // replace with your image's height
-              />
-            </div>
-            <button className={style['card-btn']}>SELECT</button>
-          </div>
-          <div className={style.card}>
-            <div className={style['card-header']}>
-              <h5 className={style['card-title']}>Title</h5>
-              <p className={style['card-description']}>Description</p>
-            </div>
-            <div className={style['img-container']}>
-              <Image
-                src="https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/v1/digital/others/gvhzi4mnle0drtrf91ru"
-                alt="prints-1"
-                width={500} // replace with your image's width
-                height={500} // replace with your image's height
-              />
-            </div>
-            <button className={style['card-btn']}>SELECT</button>
-          </div>
-          <div className={style.card}>
-            <div className={style['card-header']}>
-              <h5 className={style['card-title']}>Title</h5>
-              <p className={style['card-description']}>Description</p>
-            </div>
-            <div className={style['img-container']}>
-              <Image
-                src="https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/v1/digital/others/mna1ngaphptaymrepiyb"
-                alt="prints-1"
-                width={500} // replace with your image's width
-                height={500} // replace with your image's height
-              />
-            </div>
-            <button className={style['card-btn']}>SELECT</button>
-          </div>
-          <div className={style.card}>
-            <div className={style['card-header']}>
-              <h5 className={style['card-title']}>Title</h5>
-              <p className={style['card-description']}>Description</p>
-            </div>
-            <div className={style['img-container']}>
-              <Image
-                src="https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/v1/film/others/bgpduuhqgasifxitayk8"
-                alt="prints-1"
-                width={500} // replace with your image's width
-                height={500} // replace with your image's height
-              />
-            </div>
-            <button className={style['card-btn']}>SELECT</button>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
