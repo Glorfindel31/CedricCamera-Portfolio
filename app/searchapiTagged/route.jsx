@@ -1,4 +1,5 @@
 import cloudinary from 'cloudinary';
+import {details} from '../prints/details'
 
 const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
 const apiKey = process.env.CLOUDINARY_API_KEY;
