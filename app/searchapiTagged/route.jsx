@@ -1,5 +1,5 @@
 import cloudinary from 'cloudinary';
-import {details} from '../prints/details'
+import {imagesDetails} from '../prints/details';
 
 const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
 const apiKey = process.env.CLOUDINARY_API_KEY;
@@ -38,7 +38,22 @@ export async function GET() {
       .execute();
 
     const data = result.resources;
-    return createResponse({data});
+
+    let matchCount = 0;
+    let dataWithDetails = data.map(item => {
+      const match = imagesDetails.find(detail => detail.public_id === item.public_id);
+      if (match) {
+        matchCount++;
+        return {...item, ...match};
+      }
+      return item;
+    });
+
+    console.log(`Total items in details: ${imagesDetails.length}`);
+    console.log(`Total items with data: ${data.length}`);
+    console.log(`Total matched items: ${matchCount}`);
+
+    return createResponse({data: dataWithDetails});
   } catch (error) {
     console.error('Cloudinary API Error: ', error);
     return createResponse(

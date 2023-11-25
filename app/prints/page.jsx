@@ -83,7 +83,7 @@ export default function PrintPage() {
                   src={data.secure_url}
                   alt={data.filename}
                   title={data.filename}
-                  description={data.filename}
+                  description={data.caption}
                 />
               ))}
             </div>

@@ -3,10 +3,12 @@
   flex-direction: row;
   padding: 1rem;
   background-color: var(--background-color);
+  overflow: hidden;
 }
 .main-container {
   display: flex;
   flex-direction: column;
+  width: 75vw;
   margin-left: 25vw;
 }
 .header {
@@ -51,6 +53,7 @@
   .list {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
+    padding: 0.5rem 0;
   }
   .list-column {
     gap: 0.5rem;

@@ -70,4 +70,67 @@ export const imagesDetails = [
     public_id: 'digital/others/graal',
     caption: 'Vietnamese graal, the cup of the lord.',
   },
+  {
+    public_id: 'film/others/blue-in-concret',
+    caption: 'A building framed the beauty of the sky.',
+  },
+  {
+    public_id: 'film/others/eyes-away',
+    caption:
+      'Far in the northen mountains of Vietnam, I found myself trying to catch this family without being seen, I failed.',
+  },
+  {
+    public_id: 'film/others/glass-drops',
+    caption: 'Finding the beauty out of gloominess.',
+  },
+  {
+    public_id: 'film/others/dead-end',
+    caption: 'Bangkok, a dead end at the airport.',
+  },
+  {
+    public_id: 'film/others/bended-arround',
+    caption:
+      'My pation for patterns never ends, in those metal bars ready to be recycled.',
+  },
+  {
+    public_id: 'film/others/petrolium-three',
+    caption: 'Outside in the night, the petrole is burning.',
+  },
+  {
+    public_id: 'film/others/warm-sun',
+    caption: 'Burning sky, ready for the night.',
+  },
+  {
+    public_id: 'film/others/time-to-bath',
+    caption: 'Youngling chilling in the water, after a long hot day of summer.',
+  },
+  {
+    public_id: 'film/others/hanoi-house-two',
+    caption:
+      'Traditional house in Hanoi, Vietnam. This house must have been photographed a million times.',
+  },
+  {
+    public_id: 'film/others/half-in-the-dark',
+    caption: 'Two chairs and one table emerging from the dark. lucky them.',
+  },
+  {
+    public_id: 'film/others/reflection',
+    caption: "Bangkok's buildings are like millions of mirrors.",
+  },
+  {
+    public_id: 'film/others/hanoi-house',
+    caption: 'Some architecture devilry in Hanoi, Vietnam.',
+  },
+  {
+    public_id: 'film/others/paper-leaves',
+    caption: 'Paper leaves, a new way to see the world.',
+  },
+  {
+    public_id: 'film/others/lonely-trolley',
+    caption: 'Some trolley got tired and left behind in the middle of the night.',
+  },
+  {
+    public_id: 'film/others/lonely-sleeper',
+    caption: "Don't forget to give yourself a break.",
+  },
 ];
