@@ -19,7 +19,17 @@ export default function PrintPage() {
   const [columnData, setColumnData] = useState([]);
 
   const fetchData = useCallback(async () => {
-    const response = await getPrintingData();
+    let response;
+
+    const storedData = localStorage.getItem('printingData');
+
+    if (storedData) {
+      response = JSON.parse(storedData);
+    } else {
+      response = await getPrintingData();
+      localStorage.setItem('printingData', JSON.stringify(response));
+    }
+
     setInitialData(response);
   }, []);
 
@@ -79,7 +89,8 @@ export default function PrintPage() {
             <div key={idx} className={style['list-column']}>
               {column.map(data => (
                 <Card
-                  key={data.public_id}
+                  slug={data.asset_id}
+                  key={data.asset_id}
                   src={data.secure_url}
                   alt={data.filename}
                   title={data.filename}

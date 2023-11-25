@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import style from './card.module.css';
 
 export default function Card({...prop}) {
@@ -20,7 +21,9 @@ export default function Card({...prop}) {
         />
       </div>
       <p className={style['card-description']}>{prop.description}</p>
-      <button className={style['card-btn']}>SELECT</button>
+      <Link href={`/prints/${prop.slug}`} className={style['card-btn']}>
+        SELECT
+      </Link>
     </div>
   );
 }

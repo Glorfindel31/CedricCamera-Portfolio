@@ -52,7 +52,7 @@ export const imagesDetails = [
   },
   {
     public_id: 'digital/others/totally-fine',
-    caption: 'Wild care caught drinking petroleum in the middle of the night.',
+    caption: 'Wild car caught drinking petroleum in the middle of the night.',
   },
   {
     public_id: 'digital/others/transparency-leaf-three',

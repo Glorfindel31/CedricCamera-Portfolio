@@ -16,10 +16,16 @@
   border-radius: 0.2rem;
   padding-block: 0.2rem;
 }
+.card-btn:hover {
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  color: var(--accent-color);
+  transform: translateY(-0.2rem);
+}
 .img-container {
   position: relative;
   border-radius: 1rem;
 }
 .card-title {
   text-transform: capitalize;
+  font-size: clamp(12px, 2vw, 2.618rem);
 }
