@@ -9,6 +9,12 @@ export async function getData() {
   return result.json();
 }
 
+import data from '../public/imageData';
+
+export function getLocalData() {
+  return data;
+}
+
 //shuffle function to display different images
 export function shuffle(originalArray) {
   let array = [...originalArray];

@@ -1,7 +1,7 @@
 'use client';
 // Import necessary hooks and utilities
 import {useState, useEffect, useContext, useCallback} from 'react';
-import {getData, shuffle} from '@/utils/gallery-data';
+import {getLocalData, shuffle} from '@/utils/gallery-data';
 import {GalleryContext} from '../../utils/contextProviderGallery';
 
 // Import components
@@ -42,7 +42,7 @@ export default function GalleryAll() {
     }
 
     // Fetch and process data
-    const data = await getData();
+    const data = await getLocalData();
     let filteredData = selectedFilter
       ? chooseFolder(data.data, selectedFilter)
       : data.data;
