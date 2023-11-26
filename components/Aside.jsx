@@ -2,10 +2,10 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {GalleryContext} from '../utils/contextProviderGallery';
 import InfosModal from './ui/infosModal';
-import Footer from './footer';
-import Navigation from './navigation';
+import Footer from './Footer';
+import Navigation from './Navigation';
 import Hamburger from './ui/hamburger';
-import style from './aside.module.css';
+import style from './Aside.module.css';
 
 // The Aside component
 export default function Aside({navBar}) {

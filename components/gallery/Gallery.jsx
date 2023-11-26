@@ -5,11 +5,11 @@ import {getData, shuffle} from '@/utils/gallery-data';
 import {GalleryContext} from '../../utils/contextProviderGallery';
 
 // Import components
-import CloudinaryImage from '../cloudinary-image';
+import CloudinaryImage from '../Cloudinary-image';
 import ImageModal from '../ui/imageModal';
 
 // Import styles
-import style from './gallery.module.css';
+import style from './Gallery.module.css';
 
 // Constants
 const BASE_IMAGE_URL = 'http://res.cloudinary.com/dduwp6ob6/image/upload/';

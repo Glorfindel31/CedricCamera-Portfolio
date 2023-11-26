@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import style from './navigation.module.css';
+import style from './Navigation.module.css';
 import {IconContext} from 'react-icons';
 import {BsFillMoonStarsFill} from 'react-icons/bs';
 import {BiSun} from 'react-icons/bi';
