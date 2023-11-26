@@ -1,6 +1,6 @@
 'use client';
 import {useState} from 'react';
-import style from './cloudinaryImage.module.css';
+import style from './CloudinaryImage.module.css';
 import Image from 'next/image';
 
 export default function CloudinaryImage({onClick, ...props}) {

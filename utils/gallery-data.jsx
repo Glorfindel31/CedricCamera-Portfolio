@@ -1,6 +1,5 @@
 export async function getData() {
   const result = await fetch('/searchapi', {
-    cache: 'force-cache',
     next: {revalidate: 86400},
   });
 
