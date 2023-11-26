@@ -20,6 +20,7 @@ export default function CloudinaryImage({onClick, ...props}) {
         height={props.height}
         width={props.width}
         alt={`This is an image of ${props.alt}`}
+        loading={props.loading}
       />
       <div className={style['cld-image__over']}></div>
     </div>
