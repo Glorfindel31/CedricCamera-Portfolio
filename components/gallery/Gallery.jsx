@@ -12,7 +12,7 @@ import ImageModal from '../ui/imageModal';
 import style from './Gallery.module.css';
 
 // Constants
-const BASE_IMAGE_URL = 'http://res.cloudinary.com/dduwp6ob6/image/upload/';
+const BASE_IMAGE_URL = 'https://res.cloudinary.com/dduwp6ob6/image/upload/';
 const DEFAULT_COLUMNS = 4;
 
 export default function GalleryAll() {
@@ -135,9 +135,8 @@ export default function GalleryAll() {
                   src={BASE_IMAGE_URL}
                   alt={data.etag}
                   asset={data.public_id}
-                  format={data.format}
                   folder={data.folder}
-                  quality={'auto:best'}
+                  quality={'auto'}
                   maxsize={getMaxWidth()}
                   height={data.height}
                   width={data.width}
@@ -153,9 +152,8 @@ export default function GalleryAll() {
         src={BASE_IMAGE_URL}
         alt={currentImage.etag}
         asset={currentImage.public_id}
-        format={currentImage.format}
         folder={currentImage.folder}
-        quality={'auto:best'}
+        quality={'auto'}
         maxsize={getMaxHeight()}
         height={currentImage.height}
         width={currentImage.width}

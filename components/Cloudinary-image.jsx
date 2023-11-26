@@ -16,7 +16,7 @@ export default function CloudinaryImage({onClick, ...props}) {
         className={`transition-opacity ${isLoading ? 'opacity-0' : ''} duration-1000`}
         onLoad={() => setIsLoading(false)}
         onLoadingComplete={image => image.classList.remove('opacity-0')}
-        src={`${props.src}c_scale,w_${props.maxsize}/f_${props.formatchange}/q_${props.quality}/${props.asset}.${props.format}`}
+        src={`${props.src}c_scale,w_${props.maxsize}/f_${props.formatchange}/q_${props.quality}/${props.asset}`}
         height={props.height}
         width={props.width}
         alt={`This is an image of ${props.alt}`}

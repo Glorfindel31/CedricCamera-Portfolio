@@ -26,7 +26,7 @@ export default function ImageModal({show, onClose, ...props}) {
           <Image
             className={style['modal__popbox--image']}
             onLoadingComplete={image => image.classList.remove('opacity-0')}
-            src={`${props.src}c_scale,h_${props.maxsize}/f_${props.formatchange}/q_${props.quality}/${props.asset}.${props.format}`}
+            src={`${props.src}c_scale,h_${props.maxsize}/f_${props.formatchange}/q_${props.quality}/${props.asset}`}
             height={props.height}
             width={props.width}
             alt={props.alt}
