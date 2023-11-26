@@ -1,8 +1,8 @@
 'use client';
 import {GalleryProvider} from '../utils/contextProviderGallery';
-import Gallery from '../components/gallery/gallery';
-import Aside from '../components/aside';
-import style from './page.module.css';
+import Gallery from '../components/gallery/Gallery';
+import Aside from '../components/Aside';
+import style from './Page.module.css';
 import BtnUpPage from '../components/ui/btnUpPage';
 
 const menuItems = {
