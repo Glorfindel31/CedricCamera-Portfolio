@@ -1,7 +1,7 @@
 'use client';
 import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import style from './imageModal.module.css';
+import style from './ImageModal.module.css';
 import Image from 'next/image';
 
 export default function ImageModal({show, onClose, ...props}) {

@@ -2,7 +2,7 @@
 import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {CldImage} from 'next-cloudinary';
-import style from './infosModal.module.css';
+import style from './InfosModal.module.css';
 
 const IMAGE_URL =
   'https://res.cloudinary.com/dduwp6ob6/image/upload/v1696166893/film/comercial/Capture0012_p2jbne.jpg';
