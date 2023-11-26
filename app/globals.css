@@ -20,11 +20,42 @@
   --text-color-transparent: #ffffff50;
 }
 html {
-  font-size: 16px;
+  font-size: 8px;
 }
 body {
+  font-size: 1rem;
   background-color: var(--background-color);
   color: var(--text-color);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+h1 {
+  font-size: 17.942rem;
+  font-weight: 900;
+}
+h2 {
+  font-size: 11.089rem;
+  font-weight: 900;
+}
+h3 {
+  font-size: 6.854rem;
+  font-weight: 900;
+}
+h4 {
+  font-size: 4.236rem;
+  font-weight: 900;
+}
+h5 {
+  font-size: 2.618rem;
+  font-weight: 800;
+}
+h6 {
+  font-size: 1.618rem;
+  font-weight: 800;
 }
 .hamburger-color {
   color: var(--text-color);
@@ -38,18 +69,92 @@ img {
   user-select: none;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+@media screen and (min-width: 900px) {
   html {
     font-size: 12px;
   }
 }
-@media screen and (max-width: 900px) {
+
+@media screen and (min-width: 1200px) {
   html {
-    font-size: 10px;
+    font-size: 13px;
   }
 }
-@media screen and (max-width: 639px) {
+
+@media screen and (min-width: 1500px) {
   html {
     font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 2100px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: var(--text-color) var(--text-color) transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent var(--accent-color) var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+.loader::before {
+  width: 32px;
+  height: 32px;
+  border-color: var(--text-color) var(--text-color) transparent transparent;
+  animation: rotation 1.5s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
   }
 }

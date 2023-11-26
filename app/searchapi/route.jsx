@@ -1,21 +1,21 @@
 import cloudinary from 'cloudinary';
 
-const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-const apiKey = process.env.CLOUDINARY_API_KEY;
-const apiSecret = process.env.CLOUDINARY_API_SECRET;
-
-if (!cloudName || !apiKey || !apiSecret) {
-  console.error('Environment variables not set');
-  process.exit(1);
+function validateEnvVars(vars) {
+  vars.forEach(variable => {
+    if (!process.env[variable]) {
+      console.error(`Environment variable ${variable} not set`);
+      process.exit(1);
+    }
+  });
 }
 
-cloudinary.v2.config({
-  cloud_name: cloudName,
-  api_key: apiKey,
-  api_secret: apiSecret,
-});
+validateEnvVars(['CLOUDINARY_CLOUD_NAME', 'CLOUDINARY_API_KEY', 'CLOUDINARY_API_SECRET']);
 
-const searchExpression = 'resource_type:image';
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 function createResponse(data, status = 200) {
   return new Response(JSON.stringify(data), {
@@ -24,27 +24,12 @@ function createResponse(data, status = 200) {
   });
 }
 
-export async function GET(request) {
+export async function GET() {
   try {
-    const initialResult = await cloudinary.v2.search
-      .expression(searchExpression)
-      .max_results(1)
-      .execute();
-
-    const totalCount = initialResult.total_count;
-
-    const result = await cloudinary.v2.search
-      .expression(searchExpression)
-      .max_results(totalCount)
-      .execute();
-
+    const result = await cloudinary.v2.api.resources({type: 'upload', max_results: 300});
     const data = result.resources;
     return createResponse({data});
   } catch (error) {
-    console.error('Cloudinary API Error: ', error);
-    return createResponse(
-      {error: `Failed to fetch images from Cloudinary: ${error.message}`},
-      500,
-    );
+    throw new Error(`Failed to fetch images from Cloudinary: ${error.message}`);
   }
 }

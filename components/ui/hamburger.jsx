@@ -5,7 +5,7 @@ export default function Hamburger({menuHeight, setMenuHeight}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuHeight(prevHeight => (prevHeight === '25rem' ? '0px' : '25rem'));
+    setMenuHeight(prevHeight => (prevHeight === '1000px' ? '0px' : '1000px'));
     setIsOpen(prevIsOpen => !prevIsOpen);
   };
 

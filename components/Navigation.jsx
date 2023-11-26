@@ -1,12 +1,13 @@
 'use client';
 import Link from 'next/link';
-import style from './Navigation.module.css';
+import style from './navigation.module.css';
 import {IconContext} from 'react-icons';
 import {BsFillMoonStarsFill} from 'react-icons/bs';
 import {BiSun} from 'react-icons/bi';
 import {useTheme} from 'next-themes';
 
 export default function Navigation({
+  navBar,
   FooterComponent,
   menuHeight,
   handleOpenModal,
@@ -20,19 +21,12 @@ export default function Navigation({
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
-  const galleryTypes = {
-    all: 'All Images',
-    digiCo: 'Digital/Commercial',
-    digiOth: 'Digital/Other',
-    anaCo: 'Analogue/Commercial',
-    anaOth: 'Analogue/Other',
-  };
-
   return (
     <nav
       style={{
-        height: menuHeight,
-        transition: 'all 1s cubic-bezier(0.24, 0.06, 0.05, 0.95)',
+        maxHeight: menuHeight,
+        overflow: 'hidden',
+        transition: 'max-height 0.4s ease-in-out',
       }}
       className={style.navigation}
     >
@@ -59,16 +53,24 @@ export default function Navigation({
             </IconContext.Provider>
           </div>
         </li>
-        {Object.entries(galleryTypes).map(([type, label]) => (
-          <li key={type}>
-            <button
-              className={`${style.btn} ${currentGallery === type ? style.selected : ''}`}
-              onClick={() => setSelectedGallery(type)}
-            >
-              {label}
-            </button>
-          </li>
-        ))}
+        {navBar &&
+          Object.entries(navBar).map(([type, label]) => (
+            <li key={type}>
+              <button
+                className={`${style.btn} ${
+                  currentGallery === type ? style.selected : ''
+                }`}
+                onClick={() => setSelectedGallery(type)}
+              >
+                {label}
+              </button>
+            </li>
+          ))}
+        <li>
+          <button className={style.btn}>
+            <Link href="/prints">Prints</Link>
+          </button>
+        </li>
         <li>
           <button className={style.btn}>
             <Link href="https://www.instagram.com/cedriccamera/" target="_blank">
