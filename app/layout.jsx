@@ -1,4 +1,3 @@
-import {Inter} from 'next/font/google';
 import {Providers} from './providers';
 import Head from 'next/head';
 import GoogleAnalytics from '@/utils/google-analytics';
@@ -15,8 +14,9 @@ export default function RootLayout({children}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/public/favicon.ico" sizes="any" />
         <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="Photography, Portfolio, Prints" />
         <meta property="og:title" content="Cedric Florentin | Portfolio" />
         <meta
           property="og:description"

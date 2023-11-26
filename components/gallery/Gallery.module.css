@@ -13,6 +13,46 @@
   flex-direction: column;
 }
 
+.load-wraper {
+  position: relative;
+  min-width: calc((75vw - (3 * 0.5rem)) / 4);
+  aspect-ratio: 9/12;
+  background-color: var(--text-color-transparent);
+  z-index: 200;
+  overflow: hidden;
+}
+.activity {
+  position: absolute;
+  left: -45%;
+  height: 100%;
+  width: 40%;
+  background-image: linear-gradient(
+    to left,
+    rgba(219, 219, 219, 0.001),
+    rgba(219, 219, 219, 0.2),
+    rgba(219, 219, 219, 0.4),
+    rgba(219, 219, 219, 0.2),
+    rgba(219, 219, 219, 0.001)
+  );
+  animation: loading 2s infinite;
+  z-index: 201;
+}
+
+.activity:nth-child(n) {
+  animation-delay: calc(
+    0.01s * var(--i)
+  ); /* Delay each animation by 0.1s times the index */
+}
+
+@keyframes loading {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .gallery {
     grid-template-columns: repeat(3, 1fr);

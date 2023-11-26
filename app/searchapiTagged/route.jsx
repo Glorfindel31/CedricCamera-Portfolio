@@ -1,19 +1,21 @@
 import cloudinary from 'cloudinary';
 import {imagesDetails} from '../prints/details';
 
-const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-const apiKey = process.env.CLOUDINARY_API_KEY;
-const apiSecret = process.env.CLOUDINARY_API_SECRET;
-
-if (!cloudName || !apiKey || !apiSecret) {
-  console.error('Environment variables not set');
-  process.exit(1);
+function validateEnvVars(vars) {
+  vars.forEach(variable => {
+    if (!process.env[variable]) {
+      console.error(`Environment variable ${variable} not set`);
+      process.exit(1);
+    }
+  });
 }
 
+validateEnvVars(['CLOUDINARY_CLOUD_NAME', 'CLOUDINARY_API_KEY', 'CLOUDINARY_API_SECRET']);
+
 cloudinary.v2.config({
-  cloud_name: cloudName,
-  api_key: apiKey,
-  api_secret: apiSecret,
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 function createResponse(data, status = 200) {
@@ -25,16 +27,9 @@ function createResponse(data, status = 200) {
 
 export async function GET() {
   try {
-    const initialResult = await cloudinary.v2.search
-      .expression('resource_type:image AND tags=print')
-      .max_results(1)
-      .execute();
-
-    const totalCount = initialResult.total_count;
-
     const result = await cloudinary.v2.search
       .expression('resource_type:image AND tags=print')
-      .max_results(totalCount)
+      .max_results(300)
       .execute();
 
     const data = result.resources;
@@ -48,10 +43,6 @@ export async function GET() {
       }
       return item;
     });
-
-    console.log(`Total items in details: ${imagesDetails.length}`);
-    console.log(`Total items with data: ${data.length}`);
-    console.log(`Total matched items: ${matchCount}`);
 
     return createResponse({data: dataWithDetails});
   } catch (error) {

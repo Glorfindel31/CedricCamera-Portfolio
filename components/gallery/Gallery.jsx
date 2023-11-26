@@ -17,7 +17,8 @@ const DEFAULT_COLUMNS = 4;
 
 export default function GalleryAll() {
   // State variables
-  const [initialData, setInitialData] = useState(null);
+  const [galleryData, setGalleryData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [currentImage, setCurrentImage] = useState({});
   const [screenHeight, setScreenHeight] = useState(null);
@@ -33,6 +34,7 @@ export default function GalleryAll() {
 
   // Function to fetch data
   const fetchData = useCallback(async () => {
+    setIsLoading(true);
     // Set screen dimensions
     if (typeof window !== 'undefined') {
       setScreenHeight(window.screen.availHeight);
@@ -46,7 +48,8 @@ export default function GalleryAll() {
       : data.data;
     let shuffledData = shuffle(filteredData);
     data.data = shuffledData;
-    setInitialData(data);
+    setGalleryData(data);
+    setIsLoading(false);
   }, [selectedFilter, chooseFolder]);
 
   // Fetch data on component mount
@@ -56,7 +59,7 @@ export default function GalleryAll() {
 
   // Distribute images among columns
   useEffect(() => {
-    if (!initialData || !initialData.data) {
+    if (!galleryData || !galleryData.data) {
       setColumnData([]);
       return;
     }
@@ -65,13 +68,13 @@ export default function GalleryAll() {
     const newColumnData = Array.from({length: numColumns}, () => []);
 
     // Distribute the images among the columns
-    initialData.data.forEach((data, idx) => {
+    galleryData.data.forEach((data, idx) => {
       const colIndex = idx % numColumns;
       newColumnData[colIndex].push(data);
     });
 
     setColumnData(newColumnData);
-  }, [initialData, numColumns]);
+  }, [galleryData, numColumns]);
 
   // Function to handle image click
   const handleImageClick = useCallback(imageData => {
@@ -109,26 +112,41 @@ export default function GalleryAll() {
   // Render
   return (
     <main className={style.gallery}>
-      {columnData.map((column, idx) => (
-        <div key={idx} className={style['gallery--column']}>
-          {column.map((data, index) => (
-            <CloudinaryImage
-              key={data.public_id + index}
-              onClick={() => handleImageClick(data)}
-              src={BASE_IMAGE_URL}
-              alt={data.etag}
-              asset={data.public_id}
-              format={data.format}
-              folder={data.folder}
-              quality={'auto:best'}
-              maxsize={getMaxWidth()}
-              height={data.height}
-              width={data.width}
-              formatchange={'auto'}
-            />
+      {isLoading // Render placeholder divs while loading
+        ? // Render placeholder divs while loading
+          Array.from({length: numColumns}).map((_, colIdx) => (
+            <div key={colIdx} className={style['gallery--column']}>
+              {Array.from({length: 4}).map((_, divIdx) => {
+                const idx = colIdx * 10 + divIdx;
+                return (
+                  <div key={idx} className={style['load-wraper']}>
+                    <div className={style.activity} style={{'--i': idx}}></div>
+                  </div>
+                );
+              })}
+            </div>
+          ))
+        : columnData.map((column, idx) => (
+            <div key={idx} className={style['gallery--column']}>
+              {column.map((data, index) => (
+                <CloudinaryImage
+                  key={data.public_id + index}
+                  onClick={() => handleImageClick(data)}
+                  src={BASE_IMAGE_URL}
+                  alt={data.etag}
+                  asset={data.public_id}
+                  format={data.format}
+                  folder={data.folder}
+                  quality={'auto:best'}
+                  maxsize={getMaxWidth()}
+                  height={data.height}
+                  width={data.width}
+                  formatchange={'auto'}
+                />
+              ))}
+            </div>
           ))}
-        </div>
-      ))}
+
       <ImageModal
         onClose={() => setShowModal(false)}
         show={showModal}
