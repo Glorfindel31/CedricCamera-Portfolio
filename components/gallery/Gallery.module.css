@@ -60,6 +60,9 @@
     padding-right: 0;
     padding: 5px;
   }
+  .load-wraper {
+    min-width: calc((75vw - (2 * 2px)) / 3);
+  }
   .gallery--column {
     gap: 2px;
   }
@@ -72,6 +75,9 @@
     padding-right: 0;
     padding: 0 5px;
     margin: 0;
+  }
+  .load-wraper {
+    min-width: calc((100vw - 1px) / 2);
   }
   .gallery--column {
     gap: 1px;
