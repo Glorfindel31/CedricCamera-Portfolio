@@ -3,7 +3,6 @@ import {getPrintingData} from '../../../utils/gallery-data';
 import {useCallback, useEffect, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import style from './Page.module.css';
 
 export default function Shop({params}) {
   const {imageId} = params;

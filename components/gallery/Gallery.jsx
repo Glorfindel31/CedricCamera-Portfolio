@@ -3,8 +3,8 @@
 import {useState, useEffect, useContext, useCallback} from 'react';
 import {getLocalData, shuffle} from '@/utils/gallery-data';
 import {GalleryContext} from '../../utils/contextProviderGallery';
-import CloudinaryImage from '../Cloudinary-image';
-import ImageModal from '../ui/imageModal';
+import CloudinaryImage from '../Cloudinary-imageT';
+import ImageModal from '../ui/imageModalT';
 import style from './Gallery.module.css';
 
 // Constants

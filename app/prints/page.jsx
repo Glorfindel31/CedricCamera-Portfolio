@@ -3,8 +3,8 @@ import {getPrintingData} from '../../utils/gallery-data';
 import {useState, useCallback, useEffect} from 'react';
 import Aside from '../../components/aside';
 import style from './Page.module.css';
-import BtnUpPage from '../../components/ui/btnUpPage';
-import Card from '../../components/ui/card';
+import BtnUpPage from '../../components/ui/btnUpPageT';
+import Card from '../../components/ui/cardT';
 
 const menuItems = {
   Price: 'Price List',

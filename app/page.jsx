@@ -3,7 +3,7 @@ import {GalleryProvider} from '../utils/contextProviderGallery';
 import Gallery from '../components/gallery/Gallery';
 import Aside from '../components/Aside';
 import style from './Page.module.css';
-import BtnUpPage from '../components/ui/btnUpPage';
+import BtnUpPage from '../components/ui/btnUpPageT';
 
 const menuItems = {
   all: 'all',
