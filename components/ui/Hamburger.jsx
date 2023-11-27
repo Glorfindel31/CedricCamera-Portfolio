@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import styles from './hamburger.module.css';
+import styles from './Hamburger.module.css';
 
 export default function Hamburger({menuHeight, setMenuHeight}) {
   const [isOpen, setIsOpen] = useState(false);

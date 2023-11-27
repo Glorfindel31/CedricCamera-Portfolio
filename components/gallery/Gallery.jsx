@@ -2,9 +2,9 @@
 // Import necessary hooks and utilities
 import {useState, useEffect, useContext, useCallback} from 'react';
 import {getLocalData, shuffle} from '@/utils/gallery-data';
-import {GalleryContext} from '../../utils/contextProviderGallery';
-import CloudinaryImage from '../Cloudinary-imageT';
-import ImageModal from '../ui/imageModalT';
+import {GalleryContext} from '@utils/contextProviderGallery';
+import CloudinaryImage from '../CloudinaryImage';
+import ImageModal from '../ui/ImageModal';
 import style from './Gallery.module.css';
 
 // Constants

@@ -1,4 +1,4 @@
-import CloudinaryImage from '../Cloudinary-imageT';
+import CloudinaryImage from '../CloudinaryImage';
 import style from './Gallery.module.css';
 
 const LoadedGallery = ({columnData}) => {

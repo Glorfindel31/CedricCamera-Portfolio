@@ -1,10 +1,10 @@
 'use client';
-import {getPrintingData} from '../../utils/gallery-data';
+import {getPrintingData} from '@utils/gallery-data';
 import {useState, useCallback, useEffect} from 'react';
-import Aside from '../../components/aside';
-import style from './Page.module.css';
-import BtnUpPage from '../../components/ui/btnUpPageT';
-import Card from '../../components/ui/cardT';
+import Aside from '@components/Aside';
+import style from './page.module.css';
+import BtnUpPage from '@components/ui/BtnUpPage';
+import Card from '@components/ui/Card';
 
 const menuItems = {
   Price: 'Price List',

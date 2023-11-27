@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {IoIosArrowDropupCircle} from 'react-icons/io';
-import style from './btnUpPage.module.css';
+import style from './BtnUpPage.module.css';
 
 export default function BtnUpPage() {
   // Set the top cordinate to 0

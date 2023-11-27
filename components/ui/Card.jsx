@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import style from './card.module.css';
+import style from './Card.module.css';
 
 export default function Card({...prop}) {
   //function to remove - and replace with space

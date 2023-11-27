@@ -1,5 +1,5 @@
 'use client';
-import {getPrintingData} from '../../../utils/gallery-data';
+import {getPrintingData} from '@utils/gallery-data';
 import {useCallback, useEffect, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';

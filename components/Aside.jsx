@@ -1,10 +1,10 @@
 'use client';
 import React, {useState, useEffect, useContext} from 'react';
-import {GalleryContext} from '../utils/contextProviderGallery';
-import InfosModal from './ui/infosModalT';
+import {GalleryContext} from '@utils/contextProviderGallery';
+import InfosModal from './ui/InfosModal';
 import Footer from './Footer';
 import Navigation from './Navigation';
-import Hamburger from './ui/hamburgerT';
+import Hamburger from './ui/Hamburger';
 import style from './Aside.module.css';
 
 // The Aside component
