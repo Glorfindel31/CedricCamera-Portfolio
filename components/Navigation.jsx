@@ -66,11 +66,11 @@ export default function Navigation({
               </button>
             </li>
           ))}
-        {/* <li>
+        <li>
           <button className={style.btn}>
             <Link href="/prints">Prints</Link>
           </button>
-        </li> */}
+        </li>
         <li>
           <button className={style.btn}>
             <Link href="https://www.instagram.com/cedriccamera/" target="_blank">

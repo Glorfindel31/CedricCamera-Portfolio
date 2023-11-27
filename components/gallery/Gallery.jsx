@@ -15,7 +15,6 @@ export default function GalleryAll() {
   // State variables
   const [galleryData, setGalleryData] = useState(null);
   const [originalData, setOriginalData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [currentImage, setCurrentImage] = useState({});
   const [screenHeight, setScreenHeight] = useState(null);
@@ -31,7 +30,6 @@ export default function GalleryAll() {
 
   // Function to fetch data
   const fetchData = useCallback(async () => {
-    setIsLoading(true);
     // Set screen dimensions
     if (typeof window !== 'undefined') {
       setScreenHeight(window.screen.availHeight);
@@ -46,7 +44,6 @@ export default function GalleryAll() {
       : [...data.data]; // Use the original data when resetting
     let shuffledData = shuffle(filteredData);
     setGalleryData({data: shuffledData}); // Ensure galleryData always has a 'data' property
-    setIsLoading(false);
   }, [selectedFilter, chooseFolder, originalData]);
 
   // Fetch data on component mount
@@ -101,51 +98,28 @@ export default function GalleryAll() {
     [screenWidth],
   );
 
-  const LoadingGallery = ({numColumns}) =>
-    Array.from({length: numColumns}).map((_, colIdx) => (
-      <div key={colIdx} className={style['gallery--column']}>
-        {Array.from({length: 4}).map((_, divIdx) => {
-          const idx = colIdx * 10 + divIdx;
-          return (
-            <div key={idx} className={style['load-wraper']}>
-              <div className={style.activity} style={{'--i': idx}}></div>
-            </div>
-          );
-        })}
-      </div>
-    ));
-
-  const LoadedGallery = ({columnData}) => {
-    if (!columnData) return null;
-    return columnData.map((column, idx) => (
-      <div key={idx} className={style['gallery--column']}>
-        {column.map((data, index) => (
-          <CloudinaryImage
-            key={data.public_id + index}
-            onClick={() => handleImageClick(data)}
-            src={BASE_IMAGE_URL}
-            alt={data.etag}
-            asset={data.public_id}
-            folder={data.folder}
-            quality={'auto'}
-            formatchange={'auto'}
-            maxsize={getMaxWidth()}
-            height={data.height}
-            width={data.width}
-            loading={index < 10 ? 'eager' : 'lazy'}
-          />
-        ))}
-      </div>
-    ));
-  };
-  // In your render method
   return (
     <main className={style.gallery}>
-      {isLoading ? (
-        <LoadingGallery numColumns={numColumns} />
-      ) : (
-        <LoadedGallery columnData={columnData} />
-      )}
+      {columnData.map((column, idx) => (
+        <div key={idx} className={style['gallery--column']}>
+          {column.map((data, index) => (
+            <CloudinaryImage
+              key={data.public_id + index}
+              onClick={() => handleImageClick(data)}
+              src={BASE_IMAGE_URL}
+              alt={data.etag}
+              asset={data.public_id}
+              folder={data.folder}
+              quality={'auto'}
+              formatchange={'auto'}
+              maxsize={getMaxWidth()}
+              height={data.height}
+              width={data.width}
+              loading={'lazy'}
+            />
+          ))}
+        </div>
+      ))}
       <ImageModal
         onClose={() => setShowModal(false)}
         show={showModal}

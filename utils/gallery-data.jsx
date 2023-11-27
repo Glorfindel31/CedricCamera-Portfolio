@@ -27,10 +27,14 @@ export function shuffle(originalArray) {
 
 export async function getPrintingData() {
   const result = await fetch('/searchapiTagged', {
-    cache: 'no-cache',
+    next: {revalidate: 86400},
   });
   if (!result.ok) {
     throw new Error(`Failed to fetch: ${result.status} ${result.statusText}`);
   }
   return result.json();
+}
+
+export function getLocalPrintingData() {
+  return data;
 }
