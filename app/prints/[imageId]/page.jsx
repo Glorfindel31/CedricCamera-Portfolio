@@ -1,6 +1,7 @@
 'use client';
 import {getLocalPrintingData} from '@utils/gallery-data';
-import {useCallback, useEffect, useState} from 'react';
+import {IoMdArrowRoundBack} from 'react-icons/io';
+import {useEffect, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import style from './page.module.css';
@@ -8,8 +9,9 @@ import style from './page.module.css';
 export default function Shop({params}) {
   const {imageId} = params;
   const [imageData, setImageData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = useCallback(() => {
+  useEffect(() => {
     let response;
 
     const storedData = localStorage.getItem('printingData');
@@ -23,36 +25,42 @@ export default function Shop({params}) {
 
     const matchingData = response.data.find(item => item.asset_id === imageId);
     setImageData(matchingData);
+    setIsLoading(false);
   }, [imageId]);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main className={style.container}>
       <div className={style['shop-frame']}>
         <header className={style.header}>
-          <Link href="/prints">Back to Prints Gallery</Link>
+          <Link href="/prints" className={style['btn-backprint']}>
+            <IoMdArrowRoundBack />
+            Back to Prints Gallery
+          </Link>
           <h6>Shop</h6>
         </header>
         <div className={style.content}>
-          {imageData ? (
-            <div className={style['showcase']}>
-              <h5 className={style['image-title']}>
-                {imageData.filename.replace(/-/g, ' ')}
-              </h5>
-              <Image
-                src={imageData.secure_url}
-                alt={imageData.filename}
-                width={300}
-                height={300}
-              />
+          <div className={style['showcase']}>
+            <div
+              className={`${style.framed} ${style['frame-img-border']}`}
+            >
+              <div className={style['frame-mat']}>
+                <Image
+                  src={`https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto/q_auto/${imageData.public_id}`}
+                  alt={imageData.filename}
+                  width={1000}
+                  height={1000}
+                />
+              </div>
             </div>
-          ) : (
-            <span className="loader"></span>
-          )}
+          </div>
           <div className={style.options}>
+            <h6 className={style['image-title']}>
+              {imageData.filename.replace(/-/g, ' ')}
+            </h6>
             <label htmlFor="materiel">Materiel</label>
             <select name="materiel" id="materiel">
               <option value="">Canvas</option>

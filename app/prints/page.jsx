@@ -91,7 +91,7 @@ export default function PrintPage() {
                 <Card
                   slug={data.asset_id}
                   key={data.asset_id}
-                  src={data.secure_url}
+                  src={`https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto/q_auto/${data.public_id}`}
                   alt={data.filename}
                   title={data.filename}
                   description={data.caption}

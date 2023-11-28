@@ -92,11 +92,8 @@ export default function GalleryAll() {
   }, [handleResize]);
 
   // Functions to get max height and width
-  const getMaxHeight = useCallback(() => Math.floor(screenHeight * 2), [screenHeight]);
-  const getMaxWidth = useCallback(
-    () => Math.floor((screenWidth * 0.75) / 1.5),
-    [screenWidth],
-  );
+  const getMaxHeight = useCallback(() => Math.floor(screenHeight), [screenHeight]);
+  const getMaxWidth = useCallback(() => Math.floor(screenHeight / 2.5), [screenHeight]);
 
   return (
     <main className={style.gallery}>
@@ -110,7 +107,7 @@ export default function GalleryAll() {
               alt={data.etag}
               asset={data.public_id}
               folder={data.folder}
-              quality={'auto'}
+              quality={'50'}
               formatchange={'auto'}
               maxsize={getMaxWidth()}
               height={data.height}
@@ -127,7 +124,7 @@ export default function GalleryAll() {
         alt={currentImage.etag}
         asset={currentImage.public_id}
         folder={currentImage.folder}
-        quality={'auto'}
+        quality={'auto:best'}
         maxsize={getMaxHeight()}
         height={currentImage.height}
         width={currentImage.width}

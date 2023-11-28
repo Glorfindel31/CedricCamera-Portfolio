@@ -17,7 +17,7 @@ export default function Card({...prop}) {
           src={prop.src}
           alt={prop.alt}
           width={300} // replace with your image's width
-          height={300} // replace with your image's height
+          height={400} // replace with your image's height
         />
       </div>
       <p className={style['card-description']}>{prop.description}</p>
