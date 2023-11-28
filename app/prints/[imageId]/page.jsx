@@ -44,9 +44,7 @@ export default function Shop({params}) {
         </header>
         <div className={style.content}>
           <div className={style['showcase']}>
-            <div
-              className={`${style.framed} ${style['frame-img-border']}`}
-            >
+            <div className={`${style.framed} ${style['frame-img-border']}`}>
               <div className={style['frame-mat']}>
                 <Image
                   src={`https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto/q_auto/${imageData.public_id}`}
