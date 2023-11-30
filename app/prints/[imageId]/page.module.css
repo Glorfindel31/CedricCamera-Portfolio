@@ -51,9 +51,7 @@
   align-items: center;
   gap: 1rem;
 }
-.img-size {
-  width: 34vw;
-}
+
 .framed-wood {
   border-bottom-color: var(--wood-color-b);
   border-left-color: var(--wood-color-a);
@@ -99,12 +97,14 @@
   flex-basis: 33.33%;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 1rem;
   height: 100%;
   padding: 3vw;
   border-left: 1px solid gray;
 }
 .options label {
+  text-transform: capitalize;
   font-size: 1.2rem;
   color: gray;
 }
@@ -133,51 +133,15 @@
   margin: 0.5rem 0;
 }
 
-/* Accordion */
-.accordion {
-  margin-bottom: 2rem;
-}
-.accordion-content-wrapper {
-  font-size: 1.25em;
-  line-height: 1.4em;
-  max-height: 0px;
-  overflow: hidden;
-  transition: 0.25s ease-in-out;
-}
-.accordion-lable {
-  border-top: #000 1px solid;
-  cursor: pointer;
-  display: block;
-  font-size: 1.25em;
-  font-weight: 700;
-  padding: 30px 0 0 0;
-  position: relative;
-  margin-bottom: 0;
-  transition: all 0.25s ease-out;
-}
-.accordion-label::after {
-  border-style: solid;
-  border-width: 1px 1px 0 0;
-  border-color: #000;
-  content: ' ';
-  float: right;
-  position: relative;
-  height: 0.5rem;
-  width: 0.5rem;
-  left: 2px;
-  right: 1rem;
-  top: 2px;
-  transform: rotate(135deg);
-  transition: 0.35s ease-in-out;
-  vertical-align: top;
-}
-.accordion-checkbox:checked + .accordion-label + .accordion-content-wrapper {
-  max-height: 350px;
-}
-.accordion-checkbox:checked + .accordion-label::after {
-  transform: rotate(-45deg);
-  transition: 0.25s ease-in-out;
-}
-.accordion input[type='checkbox'] {
-  display: none;
+@media screen and (max-width: 689px) {
+  .content {
+    flex-direction: column;
+  }
+  .shop-frame {
+    margin: 0;
+    border: none;
+  }
+  .options {
+    border-left: none;
+  }
 }

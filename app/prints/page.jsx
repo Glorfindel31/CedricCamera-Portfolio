@@ -69,7 +69,6 @@ export default function PrintPage() {
 
   return (
     <main className={style['page-container']}>
-      <BtnUpPage />
       <Aside navBar={menuItems} />
       <div className={style['main-container']}>
         <div className={style.header}>
@@ -101,6 +100,7 @@ export default function PrintPage() {
           ))}
         </div>
       </div>
+      <BtnUpPage />
     </main>
   );
 }

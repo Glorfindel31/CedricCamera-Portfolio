@@ -1,3 +1,6 @@
+import data from '../public/imageData';
+import {taggedImages, imagesDetails} from '@app/prints/details';
+
 export async function getData() {
   const result = await fetch('/searchapi', {
     next: {revalidate: 86400},
@@ -8,8 +11,6 @@ export async function getData() {
   }
   return result.json();
 }
-
-import data from '../public/imageData';
 
 export function getLocalData() {
   return data;
@@ -36,5 +37,10 @@ export async function getPrintingData() {
 }
 
 export function getLocalPrintingData() {
-  return data;
+  const mergedData = taggedImages.data.map(item => {
+    const detail = imagesDetails.find(detail => detail.public_id === item.public_id);
+    return {...item, ...detail};
+  });
+
+  return {data: mergedData};
 }
