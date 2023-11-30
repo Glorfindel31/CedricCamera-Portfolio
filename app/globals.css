@@ -10,6 +10,15 @@
   --accent-color: #c72f1b;
   --text-color: #131715;
   --text-color-transparent: #13171550;
+
+  --wood-color-a: rgb(238, 228, 208);
+  --wood-color-b: rgb(230, 221, 202);
+
+  --black-color-a: rgb(20, 20, 20);
+  --black-color-b: rgb(5, 5, 5);
+
+  --white-color-a: rgb(240, 240, 240);
+  --white-color-b: rgb(250, 250, 250);
 }
 
 /* styles-dark.css */
@@ -18,6 +27,15 @@
   --accent-color: #c72f1b;
   --text-color: white;
   --text-color-transparent: #ffffff50;
+
+  --wood-color-a: rgb(238, 228, 208);
+  --wood-color-b: rgb(230, 221, 202);
+
+  --black-color-a: rgb(20, 20, 20);
+  --black-color-b: rgb(5, 5, 5);
+
+  --white-color-a: rgb(240, 240, 240);
+  --white-color-b: rgb(250, 250, 250);
 }
 html {
   font-size: 8px;

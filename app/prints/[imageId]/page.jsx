@@ -10,6 +10,44 @@ export default function Shop({params}) {
   const {imageId} = params;
   const [imageData, setImageData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [frameStyle, setFrameStyle] = useState({});
+  const [matStyle, setMatStyle] = useState({});
+  const [showcaseColor, setShowcaseColor] = useState('#ffffff');
+  const [price, setPrice] = useState(500000);
+  const [selectedOptions, setSelectedOptions] = useState({
+    materiel: 'canvas',
+    size: '20',
+    frame: 'Black',
+    price: 500000,
+  });
+
+  const sizeComputation = (width, aspectRatio) =>
+    `${width}x${Math.floor(width * aspectRatio)} cm`;
+
+  const getSoldPrice = (artPrice, printPrice, size, framePrice) => {};
+
+  const handleSelectorChange = event => {
+    const {name, value} = event.target;
+
+    setSelectedOptions(prevOptions => ({
+      ...prevOptions,
+      [name]: value,
+    }));
+  };
+
+  useEffect(() => {
+    if (selectedOptions.materiel === 'framed') {
+      setFrameStyle({
+        borderWidth: `calc((34vw * 2) / ${selectedOptions.size})`,
+      });
+      setMatStyle({
+        padding: `calc((34vw * 2) / ${selectedOptions.size})`,
+      });
+    } else {
+      setFrameStyle({});
+      setMatStyle({});
+    }
+  }, [selectedOptions.materiel, selectedOptions.size]);
 
   useEffect(() => {
     let response;
@@ -43,9 +81,31 @@ export default function Shop({params}) {
           <h6>Shop</h6>
         </header>
         <div className={style.content}>
-          <div className={style['showcase']}>
-            <div className={`${style.framed} ${style['frame-img-border']}`}>
-              <div className={style['frame-mat']}>
+          <div
+            id="showcase"
+            className={style['showcase']}
+            style={{backgroundColor: showcaseColor}}
+          >
+            <div
+              id="frame"
+              className={`${style['img-size']} ${
+                style[
+                  `${
+                    selectedOptions.materiel === 'framed'
+                      ? `framed-${selectedOptions.frame.toLowerCase()}`
+                      : ''
+                  }`
+                ]
+              }`}
+              style={frameStyle}
+            >
+              <div
+                id="mat"
+                className={
+                  selectedOptions.materiel === 'framed' ? style['frame-mat'] : ''
+                }
+                style={matStyle}
+              >
                 <Image
                   src={`https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto/q_auto/${imageData.public_id}`}
                   alt={imageData.filename}
@@ -60,23 +120,52 @@ export default function Shop({params}) {
               {imageData.filename.replace(/-/g, ' ')}
             </h6>
             <label htmlFor="materiel">Materiel</label>
-            <select name="materiel" id="materiel">
-              <option value="">Canvas</option>
-              <option value="">Paper</option>
+            <select
+              name="materiel"
+              id="materiel"
+              value={selectedOptions.materiel}
+              onChange={handleSelectorChange}
+            >
+              <option value="canvas">Canvas</option>
+              <option value="paper">Paper</option>
+              <option value="framed">Framed</option>
             </select>
             <label htmlFor="size">Size</label>
-            <select name="size" id="size">
-              <option value="">Small</option>
-              <option value="">Medium</option>
-              <option value="">Large</option>
+            <select
+              name="size"
+              id="size"
+              value={selectedOptions.size}
+              onChange={handleSelectorChange}
+            >
+              <option value="20">{sizeComputation(20, imageData.aspect_ratio)}</option>
+              <option value="40">{sizeComputation(40, imageData.aspect_ratio)}</option>
+              <option value="60">{sizeComputation(60, imageData.aspect_ratio)}</option>
             </select>
-            <label htmlFor="frame">Frame</label>
-            <select name="frame" id="frame">
-              <option value="Black">Black</option>
-              <option value="White">White</option>
-              <option value="Wood">Wood</option>
-            </select>
-            <button className={style.btn}>Order 1.500.000 VND</button>
+            {selectedOptions.materiel === 'framed' && (
+              <>
+                <label htmlFor="frame">Frame</label>
+                <select
+                  name="frame"
+                  id="frame"
+                  value={selectedOptions.frame}
+                  onChange={handleSelectorChange}
+                >
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Wood">Wood</option>
+                </select>
+              </>
+            )}
+            <label htmlFor="colorPicker">Pick the color of your wall.</label>
+            <input
+              name="colorPicker"
+              type="color"
+              value={showcaseColor}
+              onChange={event => setShowcaseColor(event.target.value)}
+            />
+            <button className={style.btn}>
+              Order {price.toLocaleString('vn-VN')} VND
+            </button>
             {/*description accordion*/}
             <div className={style.accordion}>
               <input

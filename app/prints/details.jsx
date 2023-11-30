@@ -2,136 +2,168 @@ export const imagesDetails = [
   {
     public_id: 'digital/others/rice-patterns',
     caption: 'An aerial view of a field of dead rice stalks in the middle of the day.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/into-the-myst',
     caption: 'A cloudy sky over a mountain range in Vietnam.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/curiosity',
     caption:
       'Two brown cows standing next to each other in a field. One is looking at the camera.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/framed-sky',
     caption:
       'A building framed by a bridge and an other building catchs the light and the clouds reflection.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/serious-matters',
     caption: 'An old man in Yen Tinh, Vietnam, looks at the camera. Why so serious?',
+    price: 500000,
   },
   {
     public_id: 'digital/others/ready-to-fly',
     caption: "Vanishing point of Bangkok's Suvarnabhumi Airport's runway.",
+    price: 500000,
   },
   {
     public_id: 'digital/others/open-sit',
     caption: 'Hoi An by night, small open sit waiting for customers.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/lights-on-ideas',
     caption: 'Hoi An, in a coffeshop an empty desk, but not for long.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/small-little-trees',
     caption:
       'Vietnam landscapes are breathtaking, those small threes on the edge of the mountain like the feathers on the head of the peacock.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/heads-in-the-clouds',
     caption: 'The sun, burning the clouds.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/transparency-leaf-one',
     caption: 'The first of 3, a leaf on a white background. It is all about details.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/line-breaking',
     caption: 'Urban, the petrole by night.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/totally-fine',
     caption: 'Wild car caught drinking petroleum in the middle of the night.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/transparency-leaf-three',
     caption: 'The third of 3, a leaf on a white background. It is all about details.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/transparency-leaf-two',
     caption: 'The second of 3, a leaf on a white background. It is all about details.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/ominous-build',
     caption: 'Dark in the night the building is looking in your direction, ominous.',
+    price: 500000,
   },
   {
     public_id: 'digital/others/graal',
     caption: 'Vietnamese graal, the cup of the lord.',
+    price: 500000,
   },
   {
     public_id: 'film/others/blue-in-concret',
     caption: 'A building framed the beauty of the sky.',
+    price: 500000,
   },
   {
     public_id: 'film/others/eyes-away',
     caption:
       'Far in the northen mountains of Vietnam, I found myself trying to catch this family without being seen, I failed.',
+    price: 500000,
   },
   {
     public_id: 'film/others/glass-drops',
     caption: 'Finding the beauty out of gloominess.',
+    price: 500000,
   },
   {
     public_id: 'film/others/dead-end',
     caption: 'Bangkok, a dead end at the airport.',
+    price: 500000,
   },
   {
     public_id: 'film/others/bended-arround',
     caption:
       'My pation for patterns never ends, in those metal bars ready to be recycled.',
+    price: 500000,
   },
   {
     public_id: 'film/others/petrolium-three',
     caption: 'Outside in the night, the petrole is burning.',
+    price: 500000,
   },
   {
     public_id: 'film/others/warm-sun',
     caption: 'Burning sky, ready for the night.',
+    price: 500000,
   },
   {
     public_id: 'film/others/time-to-bath',
     caption: 'Youngling chilling in the water, after a long hot day of summer.',
+    price: 500000,
   },
   {
     public_id: 'film/others/hanoi-house-two',
     caption:
       'Traditional house in Hanoi, Vietnam. This house must have been photographed a million times.',
+    price: 500000,
   },
   {
     public_id: 'film/others/half-in-the-dark',
     caption: 'Two chairs and one table emerging from the dark. lucky them.',
+    price: 500000,
   },
   {
     public_id: 'film/others/reflection',
     caption: "Bangkok's buildings are like millions of mirrors.",
+    price: 500000,
   },
   {
     public_id: 'film/others/hanoi-house',
     caption: 'Some architecture devilry in Hanoi, Vietnam.',
+    price: 500000,
   },
   {
     public_id: 'film/others/paper-leaves',
     caption: 'Paper leaves, a new way to see the world.',
+    price: 500000,
   },
   {
     public_id: 'film/others/lonely-trolley',
     caption: 'Some trolley got tired and left behind in the middle of the night.',
+    price: 500000,
   },
   {
     public_id: 'film/others/lonely-sleeper',
     caption: "Don't forget to give yourself a break.",
+    price: 500000,
   },
 ];
 

@@ -7,7 +7,7 @@
   background-color: rgb(217, 217, 217);
 }
 .shop-frame {
-  margin: 3rem;
+  margin: 3vw;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -42,6 +42,7 @@
   width: 100%;
 }
 .showcase {
+  padding: 2rem 0;
   flex-grow: 2;
   flex-basis: 66.66%;
   display: flex;
@@ -50,29 +51,41 @@
   align-items: center;
   gap: 1rem;
 }
-.image-wrapper {
-  width: 80%;
+.img-size {
+  width: 34vw;
 }
-.framed {
-  max-width: 30vw;
-  width: 80%;
-  border-bottom-color: #d9bf92;
-  border-left-color: #d9b98c;
-  border-right-color: #d9b98c;
-  border-top-color: #d9bf92;
-  background: #d9bf92;
+.framed-wood {
+  border-bottom-color: var(--wood-color-b);
+  border-left-color: var(--wood-color-a);
+  border-right-color: var(--wood-color-a);
+  border-top-color: var(--wood-color-b);
+  background: var(--wood-color-b);
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2) inset, 0 4px 5px 4px rgba(0, 0, 0, 0.2);
-  border-width: 5vw;
+  border-style: solid;
+}
+.framed-black {
+  border-bottom-color: var(--black-color-b);
+  border-left-color: var(--black-color-a);
+  border-right-color: var(--black-color-a);
+  border-top-color: var(--black-color-b);
+  background: var(--black-color-b);
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2) inset, 0 4px 5px 4px rgba(0, 0, 0, 0.2);
+  border-style: solid;
+}
+.framed-white {
+  border-bottom-color: var(--white-color-b);
+  border-left-color: var(--white-color-a);
+  border-right-color: var(--white-color-a);
+  border-top-color: var(--white-color-b);
+  background: var(--white-color-b);
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2) inset, 0 4px 5px 4px rgba(0, 0, 0, 0.2);
   border-style: solid;
 }
 .frame-mat {
   background-color: rgb(248 248 255);
   box-shadow: 0 0 20px 0 rgb(0 0 0 / 50%) inset;
-  padding: 5vw;
 }
 .frame-mat img {
-  width: 100%;
-  max-height: 100%;
   object-fit: contain;
   border: solid 2px;
   border-bottom-color: #ffe;
@@ -88,6 +101,32 @@
   flex-direction: column;
   gap: 1rem;
   height: 100%;
+  padding: 3vw;
+  border-left: 1px solid gray;
+}
+.options label {
+  font-size: 1.2rem;
+  color: gray;
+}
+.options select {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: 1px solid gray;
+  background-color: white;
+}
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: gray;
+  color: white;
+  border: 1px solid gray;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.25s ease-in-out;
+}
+.btn:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
 }
 .image-title {
   text-transform: capitalize;
