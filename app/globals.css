@@ -9,6 +9,7 @@
   --background-color: white;
   --accent-color: #c72f1b;
   --text-color: #131715;
+  --grey-color: rgb(90, 90, 90);
   --text-color-transparent: #13171550;
 
   --wood-color-a: rgb(238, 228, 208);
@@ -26,6 +27,7 @@
   --background-color: #131715;
   --accent-color: #c72f1b;
   --text-color: white;
+  --grey-color: rgb(170, 170, 170);
   --text-color-transparent: #ffffff50;
 
   --wood-color-a: rgb(238, 228, 208);

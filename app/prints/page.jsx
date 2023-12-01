@@ -7,8 +7,7 @@ import BtnUpPage from '@components/ui/BtnUpPage';
 import Card from '@components/ui/Card';
 
 const menuItems = {
-  Price: 'Price List',
-  Request: 'Request a Quote',
+  Back: "/",
 };
 
 const DEFAULT_COLUMNS = 4;
@@ -72,7 +71,7 @@ export default function PrintPage() {
       <Aside navBar={menuItems} />
       <div className={style['main-container']}>
         <div className={style.header}>
-          <h4 className={style.title}>Printing</h4>
+          <h5>Printing</h5>
           <p className={style.description}>
             Welcome in my shop, you will find a large choice of frame for the prints.
             Select your favorite in our catalog. Pick a frame and a size, and copy the

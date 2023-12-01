@@ -1,4 +1,3 @@
-'use client';
 import {GalleryProvider} from '../utils/contextProviderGallery';
 import Gallery from '../components/gallery/Gallery';
 import Aside from '../components/Aside';
@@ -17,12 +16,12 @@ export default function Home() {
   return (
     <GalleryProvider>
       <div className={style['page-container']}>
-        <BtnUpPage />
         <Aside navBar={menuItems} />
         <div className={style.gallery}>
           <Gallery />
         </div>
       </div>
+      <BtnUpPage />
     </GalleryProvider>
   );
 }

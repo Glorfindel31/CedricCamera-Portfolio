@@ -10,7 +10,7 @@ export default function Shop({params}) {
   const [frameStyle, setFrameStyle] = useState({});
   const [windowSize, setWindowSize] = useState(null); // [width, height
   const [matStyle, setMatStyle] = useState({});
-  const [showcaseColor, setShowcaseColor] = useState('#ffffff');
+  const [showcaseColor, setShowcaseColor] = useState('var(--background-color)');
   const [selectedOptions, setSelectedOptions] = useState({
     materiel: 'canvas',
     size: '20',

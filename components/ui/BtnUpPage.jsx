@@ -1,3 +1,4 @@
+'use client';
 import {useEffect} from 'react';
 import {IoIosArrowDropupCircle} from 'react-icons/io';
 import style from './BtnUpPage.module.css';

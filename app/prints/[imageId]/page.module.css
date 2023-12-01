@@ -4,14 +4,14 @@
   min-height: 100dvh;
   width: 100vw;
   width: 100dvw;
-  background-color: rgb(217, 217, 217);
+  background-color: var(--background-color);
 }
 .shop-frame {
   margin: 3vw;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border: 1px solid rgb(164, 164, 164);
+  background-color: var(--background-color);
+  border: 1px solid var(--grey-color);
 }
 .header {
   display: flex;
@@ -20,7 +20,7 @@
   justify-content: space-between;
   padding: 0.5rem 2rem;
   width: 100%;
-  box-shadow: 0px 2px 10px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 10px -5px var(--text-color-transparent);
 }
 .btn-backprint {
   display: flex;
@@ -58,7 +58,8 @@
   border-right-color: var(--wood-color-a);
   border-top-color: var(--wood-color-b);
   background: var(--wood-color-b);
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2) inset, 0 4px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px 5px var(--text-color-transparent) inset,
+    0 4px 5px 4px var(--text-color-transparent);
   border-style: solid;
 }
 .framed-black {
@@ -67,7 +68,8 @@
   border-right-color: var(--black-color-a);
   border-top-color: var(--black-color-b);
   background: var(--black-color-b);
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2) inset, 0 4px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px 5px var(--text-color-transparent) inset,
+    0 4px 5px 4px var(--text-color-transparent);
   border-style: solid;
 }
 .framed-white {
@@ -76,7 +78,8 @@
   border-right-color: var(--white-color-a);
   border-top-color: var(--white-color-b);
   background: var(--white-color-b);
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2) inset, 0 4px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px 5px var(--text-color-transparent) inset,
+    0 4px 5px 4px var(--text-color-transparent);
   border-style: solid;
 }
 .frame-mat {
@@ -101,24 +104,24 @@
   gap: 1rem;
   height: 100%;
   padding: 3vw;
-  border-left: 1px solid gray;
+  border-left: 1px solid var(--grey-color);
 }
 .options label {
   text-transform: capitalize;
   font-size: 1.2rem;
-  color: gray;
+  color: var(--grey-color);
 }
 .options select {
   font-size: 1.2rem;
   padding: 0.5rem;
-  border: 1px solid gray;
-  background-color: white;
+  border: 1px solid var(--grey-color);
+  background-color: var(--background-color);
 }
 .btn {
   padding: 0.5rem 1rem;
-  background-color: gray;
-  color: white;
-  border: 1px solid gray;
+  background-color: var(--grey-color);
+  color: var(--background-color);
+  border: 1px solid var(--grey-color);
   font-size: 1.2rem;
   font-weight: 700;
   cursor: pointer;
