@@ -6,30 +6,16 @@ import {BsFillMoonStarsFill} from 'react-icons/bs';
 import {BiSun} from 'react-icons/bi';
 import {useTheme} from 'next-themes';
 
-export default function Navigation({
-  navBar,
-  FooterComponent,
-  menuHeight,
-  handleOpenModal,
-  setSelectedGallery,
-  currentGallery,
-}) {
+export default function Navigation({navBar}) {
   const {theme, setTheme} = useTheme();
-
+  const menuItems = navBar;
   // Function to toggle the theme
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   return (
-    <nav
-      style={{
-        maxHeight: menuHeight,
-        overflow: 'hidden',
-        transition: 'max-height 0.4s ease-in-out',
-      }}
-      className={style.navigation}
-    >
+    <nav className={style.navigation}>
       <ul className="pl-2">
         <li>
           <div>
@@ -53,38 +39,14 @@ export default function Navigation({
             </IconContext.Provider>
           </div>
         </li>
-        {navBar &&
-          Object.entries(navBar).map(([type, label]) => (
-            <li key={type}>
-              <button
-                className={`${style.btn} ${
-                  currentGallery === type ? style.selected : ''
-                }`}
-                onClick={() => setSelectedGallery(type)}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
-        <li>
-          <button className={style.btn}>
-            <Link href="/prints">Prints</Link>
-          </button>
-        </li>
-        <li>
-          <button className={style.btn}>
-            <Link href="https://www.instagram.com/cedriccamera/" target="_blank">
-              Instagram
+        {menuItems.map((item, index) => (
+          <li key={index}>
+            <Link className={style.btn} href={item.path}>
+              {item.name}
             </Link>
-          </button>
-        </li>
-        <li>
-          <button className={style.btn} onClick={handleOpenModal}>
-            Infos
-          </button>
-        </li>
+          </li>
+        ))}
       </ul>
-      {FooterComponent && <FooterComponent />}
     </nav>
   );
 }

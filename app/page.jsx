@@ -1,27 +1,25 @@
-import {GalleryProvider} from '../utils/contextProviderGallery';
 import Gallery from '../components/gallery/Gallery';
 import Aside from '../components/Aside';
 import style from './page.module.css';
 import BtnUpPage from '../components/ui/BtnUpPage';
 
-const menuItems = {
-  all: 'all',
-  digiCo: 'digital/comercial',
-  digiOth: 'digital/others',
-  anaCo: 'film/comercial',
-  anaOth: 'film/others',
-};
+const menuItems = [
+  {name: 'all', path: '/'},
+  {name: 'digital comercial', path: '/digital/comercial'},
+  {name: 'digital others', path: '/digital/others'},
+  {name: 'analog comercial', path: '/film/comercial'},
+  {name: 'analog others', path: '/film/others'},
+  {name: 'prints', path: '/prints'},
+  {name: 'about', path: '/about'},
+  {name: 'instagram', path: '/instagram'},
+  {name: 'contact', path: '/contact'},
+];
 
 export default function Home() {
   return (
-    <GalleryProvider>
-      <div className={style['page-container']}>
-        <Aside navBar={menuItems} />
-        <div className={style.gallery}>
-          <Gallery />
-        </div>
-      </div>
-      <BtnUpPage />
-    </GalleryProvider>
+    <main className={style['page-container']}>
+      <Aside navBar={menuItems} />
+      <div className={style.gallery}>{/* <Gallery /> */}</div>
+    </main>
   );
 }
