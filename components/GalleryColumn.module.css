@@ -29,7 +29,7 @@
 }
 
 .column__item:hover::after {
-  background: rgba(0, 0, 0, 0.5); /* semi-transparent black on hover */
+  background: var(--text-color-transparent); /* semi-transparent black on hover */
 }
 
 @media screen and (max-width: 1000px) {

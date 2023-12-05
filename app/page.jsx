@@ -21,7 +21,7 @@ export default async function Home() {
   async function imageFiltered(location) {
     const data = await getData();
     if (location === 'all') {
-      return data;
+      return shuffle(data);
     } else {
       return shuffle(data.filter(item => item.folder === location));
     }

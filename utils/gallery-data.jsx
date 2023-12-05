@@ -14,15 +14,14 @@ export function getLocalData() {
   return data;
 }
 
-//shuffle function to display different images
-export function shuffle(originalArray) {
-  let array = [...originalArray];
-  for (let i = array.length - 1; i > 0; i--) {
+
+export const shuffle = a => {
+  for (let i = a.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [a[i], a[j]] = [a[j], a[i]];
   }
-  return array;
-}
+  return a;
+};
 
 export async function getPrintingData() {
   const result = await fetch('/searchapiTagged', {

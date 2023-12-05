@@ -34,14 +34,14 @@ export default function GalleryColumn({imageData, ...props}) {
         <div key={idx} className={style.column}>
           {(imageData.data || [])
             .filter((_, i) => i % numColumns === idx)
-            .map(({name, path, public_id}) => (
-              <div key={name} className={style['column__item']}>
+            .map(({public_id, asset_id, ressource_type, folder}) => (
+              <div key={asset_id} className={style['column__item']}>
                 <Image
                   src={`https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/${public_id}`}
                   quality="auto"
                   width={500}
                   height={600}
-                  alt={name}
+                  alt={`${public_id} ${ressource_type}`}
                   loading="lazy"
                 />
               </div>
