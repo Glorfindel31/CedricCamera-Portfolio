@@ -2,9 +2,7 @@ import data from '../public/imageData';
 import {taggedImages, imagesDetails} from '@app/prints/details';
 
 export async function getData() {
-  const result = await fetch('/searchapi', {
-    next: {revalidate: 86400},
-  });
+  const result = await fetch('http://localhost:3000/searchapi');
 
   if (!result.ok) {
     throw new Error(`Failed to fetch: ${result.status} ${result.statusText}`);

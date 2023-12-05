@@ -1,7 +1,7 @@
-import Gallery from '../components/gallery/Gallery';
 import Aside from '../components/Aside';
 import style from './page.module.css';
-import BtnUpPage from '../components/ui/BtnUpPage';
+import GalleryColumn from '../components/GalleryColumn';
+import {getData, shuffle} from '@/utils/gallery-data';
 
 const menuItems = [
   {name: 'all', path: '/'},
@@ -11,15 +11,28 @@ const menuItems = [
   {name: 'analog others', path: '/film/others'},
   {name: 'prints', path: '/prints'},
   {name: 'about', path: '/about'},
-  {name: 'instagram', path: '/instagram'},
+  {name: 'instagram', path: 'https://www.instagram.com/cedriccamera/', newTab: true},
   {name: 'contact', path: '/contact'},
 ];
 
-export default function Home() {
+const location = 'all';
+
+export default async function Home() {
+  async function imageFiltered(location) {
+    const data = await getData();
+    if (location === 'all') {
+      return data;
+    } else {
+      return shuffle(data.filter(item => item.folder === location));
+    }
+  }
+
+  const imageData = await imageFiltered(location);
+
   return (
-    <main className={style['page-container']}>
-      <Aside navBar={menuItems} />
-      <div className={style.gallery}>{/* <Gallery /> */}</div>
+    <main className={style.container}>
+      <Aside navBar={menuItems} location={location} />
+      <GalleryColumn location={location} imageData={imageData} />
     </main>
   );
 }

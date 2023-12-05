@@ -1,51 +1,30 @@
-'use client';
 import Link from 'next/link';
 import style from './Navigation.module.css';
-import {IconContext} from 'react-icons';
-import {BsFillMoonStarsFill} from 'react-icons/bs';
-import {BiSun} from 'react-icons/bi';
-import {useTheme} from 'next-themes';
+import BtnTheme from './ui/BtnTheme';
 
-export default function Navigation({navBar}) {
-  const {theme, setTheme} = useTheme();
-  const menuItems = navBar;
-  // Function to toggle the theme
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
+export default function Navigation({...props}) {
+  const menuItems = props.navBar;
+  const location = props.location;
   return (
     <nav className={style.navigation}>
-      <ul className="pl-2">
+      <ul>
         <li>
-          <div>
-            <IconContext.Provider value={{className: style.icon}}>
-              <input
-                type="checkbox"
-                className={style.checkbox}
-                id="checkbox"
-                checked={theme === 'dark'}
-                onChange={toggleTheme}
-              />
-              <label htmlFor="checkbox" className={style['checkbox-label']}>
-                <i>
-                  <BsFillMoonStarsFill />
-                </i>
-                <i>
-                  <BiSun />
-                </i>
-                <span className={style.ball}></span>
-              </label>
-            </IconContext.Provider>
-          </div>
+          <BtnTheme />
         </li>
-        {menuItems.map((item, index) => (
-          <li key={index}>
-            <Link className={style.btn} href={item.path}>
-              {item.name}
-            </Link>
-          </li>
-        ))}
+        {menuItems.map((item, index) => {
+          const linkProps = item.newTab ? {target: '_blank'} : {};
+          const isSelected = location === item.name;
+          const itemClass = isSelected
+            ? `${style.btn} ${style.selected}`
+            : `${style.btn}`;
+          return (
+            <li key={index} className={itemClass}>
+              <Link href={item.path} {...linkProps}>
+                {item.name}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

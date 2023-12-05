@@ -1,54 +1,101 @@
-.aside-menu {
+.container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: auto;
-  padding: 2rem 2rem 0rem 2rem;
-  position: relative;
-  top: 0;
-  left: 0;
+  gap: 1rem;
+  padding: 2rem;
+  min-height: 100vh;
+  min-width: 200px;
+}
+.logo {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 200;
+  color: var(--grey-color);
 }
 
-.aside-menu_logo-box {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.aside-menu_logo-box--logo {
-  font-size: 3rem;
-  line-height: 3rem;
-}
-
-.aside-menu_logo-box--logo span {
+.logo span {
   font-weight: 900;
+  color: var(--text-color);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 50vh;
+  height: 100%;
+  inset: 0;
+  transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
+}
+.checkbox {
+  position: absolute;
+  visibility: hidden;
+  width: 3rem;
+  height: 3rem;
+  top: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  opacity: 0;
+  z-index: 50;
+}
+.arrow {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+.arrow svg {
+  height: 0;
+  width: 0;
 }
 
-@media screen and (min-width: 640px) {
-  .aside-menu {
-    width: 25vw;
-    height: 100vh;
-    padding: 2rem;
-    position: fixed;
-  }
-
-  .aside-menu_logo-box--logo {
-    font-size: 1rem;
-    line-height: 2rem;
-  }
+.checkbox:checked ~ .arrow svg {
+  transform: rotate(180deg);
+  fill: var(--accent-color);
+}
+.checkbox:checked ~ .arrow {
+  width: 4rem;
+}
+.checkbox:checked ~ .content {
+  min-height: 0;
+  max-height: 100vh;
 }
 
-@media screen and (min-width: 900px) {
-  .aside-menu_logo-box--logo {
-    font-size: 1.2rem;
-    line-height: 2rem;
+@media screen and (max-width: 700px) {
+  .container {
+    min-height: 0;
+    width: 100vw;
+    align-items: center;
   }
-}
-
-@media screen and (min-width: 1000px) {
-  .aside-menu_logo-box--logo {
-    font-size: 2rem;
-    line-height: 2rem;
+  .content {
+    max-height: 0;
+    min-height: 0;
+    width: 100vw;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    overflow: hidden;
+  }
+  .checkbox {
+    visibility: visible;
+  }
+  .arrow {
+    visibility: visible;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    width: 80vw;
+    height: auto;
+    cursor: pointer;
+    border-top: 1px solid var(--text-color);
+    transition: width 0.3s ease-in-out;
+  }
+  .arrow svg {
+    fill: var(--text-color);
+    transition: fill 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    width: 4rem;
+    height: 4rem;
+  }
+  .logo {
+    font-size: calc(100vw / 10);
   }
 }

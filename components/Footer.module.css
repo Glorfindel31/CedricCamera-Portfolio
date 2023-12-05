@@ -1,10 +1,22 @@
 .footer {
   margin-top: auto;
   background-color: var(--background-color);
-  padding: 1rem;
+  width: 100%;
 }
 .footer_text {
   color: var(--text-color);
   font-size: 0.8rem;
   line-height: 1rem;
+}
+@media screen and (max-width: 700px) {
+  .footer {
+    margin-top: 1rem;
+  }
+  .footer_text {
+    display: inline-block;
+    width: 100%;
+    font-size: 0.7rem;
+    line-height: 0.9rem;
+    text-align: center;
+  }
 }

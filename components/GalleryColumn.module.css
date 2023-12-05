@@ -4,10 +4,11 @@
   gap: 0.5rem;
   padding: 0.5rem;
   padding-right: 2rem;
-  margin-left: 25vw;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
-.gallery--column {
+.gallery-column {
   gap: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -16,24 +17,23 @@
 @media screen and (max-width: 1000px) {
   .gallery {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    padding-right: 0;
+    gap: 5px;
     padding: 5px;
   }
   .gallery--column {
-    gap: 2px;
+    gap: 5px;
   }
 }
 
-@media screen and (max-width: 639px) {
+@media screen and (max-width: 700px) {
   .gallery {
+    width: 100vw;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    padding-right: 0;
-    padding: 0 5px;
+    gap: 5px;
+    padding: 5px;
     margin: 0;
   }
   .gallery--column {
-    gap: 1px;
+    gap: 5px;
   }
 }
