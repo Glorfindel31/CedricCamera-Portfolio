@@ -29,23 +29,21 @@ export default function GalleryColumn({imageData, ...props}) {
   }, [handleResize]);
 
   return (
-    <div className={style.gallery}>
+    <div className={style.container}>
       {Array.from({length: numColumns}, (_, idx) => (
-        <div key={idx} className={style['gallery-column']}>
+        <div key={idx} className={style.column}>
           {(imageData.data || [])
             .filter((_, i) => i % numColumns === idx)
             .map(({name, path, public_id}) => (
-              <div key={name} className={style['gallery--column--item']}>
-                <a href={path} target="_blank" rel="noreferrer">
-                  <Image
-                    src={`https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/${public_id}`}
-                    quality="auto"
-                    width={500}
-                    height={600}
-                    alt={name}
-                    loading="lazy"
-                  />
-                </a>
+              <div key={name} className={style['column__item']}>
+                <Image
+                  src={`https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/${public_id}`}
+                  quality="auto"
+                  width={500}
+                  height={600}
+                  alt={name}
+                  loading="lazy"
+                />
               </div>
             ))}
         </div>
