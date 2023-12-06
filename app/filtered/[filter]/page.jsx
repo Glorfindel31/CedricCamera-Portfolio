@@ -1,6 +1,6 @@
-import Aside from '../components/Aside';
+import Aside from '@components/Aside';
 import style from './page.module.css';
-import GalleryColumn from '../components/GalleryColumn';
+import GalleryColumn from '@components/GalleryColumn';
 import {getData, shuffle} from '@/utils/gallery-data';
 
 const menuItems = [
@@ -19,8 +19,8 @@ const menuItems = [
   {name: 'contact', path: '/contact'},
 ];
 
-export default async function Home() {
-  const location = 'all';
+export default async function Home({params}) {
+  const location = params.filter.replace(/-/g, '/');
 
   async function imageFiltered(location) {
     const data = await getData();
@@ -35,7 +35,7 @@ export default async function Home() {
 
   return (
     <main className={style.container}>
-      <Aside navBar={menuItems} filter={location} />
+      <Aside navBar={menuItems} location={location} />
       <GalleryColumn imageData={imageData} />
     </main>
   );

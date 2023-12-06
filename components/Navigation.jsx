@@ -13,7 +13,7 @@ export default function Navigation({...props}) {
         </li>
         {menuItems.map((item, index) => {
           const linkProps = item.newTab ? {target: '_blank'} : {};
-          const isSelected = location === item.name;
+          const isSelected = location === item.filter;
           const itemClass = isSelected
             ? `${style.btn} ${style.selected}`
             : `${style.btn}`;

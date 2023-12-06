@@ -4,9 +4,8 @@ import style from './GalleryColumn.module.css';
 import Image from 'next/image';
 
 const DEFAULT_COLUMNS = 4;
-export default function GalleryColumn({imageData, ...props}) {
+export default function GalleryColumn({imageData}) {
   const [numColumns, setNumColumns] = useState(DEFAULT_COLUMNS);
-  const location = props.location;
 
   // Function to handle screen resize
   const handleResize = useCallback(() => {
