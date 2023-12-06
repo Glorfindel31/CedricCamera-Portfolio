@@ -1,6 +1,6 @@
 import Aside from '@components/Aside';
 import style from './page.module.css';
-import GalleryColumn from '@components/GalleryColumn';
+import GalleryColumn from '@/components/Gallery';
 import {getData, shuffle} from '@/utils/gallery-data';
 
 const menuItems = [

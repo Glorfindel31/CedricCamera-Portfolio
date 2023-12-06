@@ -1,11 +1,13 @@
 'use client';
-import React, {useState, useEffect, useCallback} from 'react';
-import style from './GalleryColumn.module.css';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
+import style from './Gallery.module.css';
 import Image from 'next/image';
+import BtnUpPage from './ui/BtnUpPage';
 
 const DEFAULT_COLUMNS = 4;
-export default function GalleryColumn({imageData}) {
+export default function Gallery({imageData}) {
   const [numColumns, setNumColumns] = useState(DEFAULT_COLUMNS);
+  const galleryRef = useRef(null);
 
   // Function to handle screen resize
   const handleResize = useCallback(() => {
@@ -28,7 +30,8 @@ export default function GalleryColumn({imageData}) {
   }, [handleResize]);
 
   return (
-    <div className={style.container}>
+    <div ref={galleryRef} className={style.container}>
+      <BtnUpPage galleryRef={galleryRef} />
       {Array.from({length: numColumns}, (_, idx) => (
         <div key={idx} className={style.column}>
           {(imageData.data || [])

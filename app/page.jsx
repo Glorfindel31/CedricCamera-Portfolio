@@ -1,6 +1,6 @@
 import Aside from '../components/Aside';
 import style from './page.module.css';
-import GalleryColumn from '../components/GalleryColumn';
+import Gallery from '../components/Gallery';
 import {getData, shuffle} from '@/utils/gallery-data';
 
 const menuItems = [
@@ -35,8 +35,8 @@ export default async function Home() {
 
   return (
     <main className={style.container}>
-      <Aside navBar={menuItems} filter={location} />
-      <GalleryColumn imageData={imageData} />
+      <Aside navBar={menuItems} location={location} />
+      <Gallery imageData={imageData} />
     </main>
   );
 }
