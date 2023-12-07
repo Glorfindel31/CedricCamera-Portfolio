@@ -31,7 +31,10 @@
 .column__item:hover::after {
   background: var(--text-color-transparent); /* semi-transparent black on hover */
 }
-
+.column__item button {
+  position: relative;
+  z-index: 1;
+}
 @media screen and (max-width: 1000px) {
   .container {
     grid-template-columns: repeat(3, 1fr);

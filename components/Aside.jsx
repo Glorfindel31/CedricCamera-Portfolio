@@ -1,7 +1,8 @@
-import Footer from './Footer';
-import Navigation from './Navigation';
-import style from './Aside.module.css';
 import Link from 'next/link';
+import style from './Aside.module.css';
+import Navigation from './Navigation';
+import Footer from './Footer';
+
 import {TiArrowSortedDown} from 'react-icons/ti';
 
 // The Aside component

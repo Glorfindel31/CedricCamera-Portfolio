@@ -1,6 +1,3 @@
-import data from '../public/imageData';
-import {taggedImages, imagesDetails} from '@app/prints/details';
-
 export async function getData() {
   const result = await fetch('http://localhost:3000/searchapi');
 
@@ -8,10 +5,6 @@ export async function getData() {
     throw new Error(`Failed to fetch: ${result.status} ${result.statusText}`);
   }
   return result.json();
-}
-
-export function getLocalData() {
-  return data;
 }
 
 export const shuffle = a => {
@@ -30,13 +23,4 @@ export async function getPrintingData() {
     throw new Error(`Failed to fetch: ${result.status} ${result.statusText}`);
   }
   return result.json();
-}
-
-export function getLocalPrintingData() {
-  const mergedData = taggedImages.data.map(item => {
-    const detail = imagesDetails.find(detail => detail.public_id === item.public_id);
-    return {...item, ...detail};
-  });
-
-  return {data: mergedData};
 }

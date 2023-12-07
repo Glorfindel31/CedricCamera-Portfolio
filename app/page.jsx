@@ -1,7 +1,7 @@
+import {getData, shuffle} from '@/utils/gallery-data';
 import Aside from '../components/Aside';
 import style from './page.module.css';
 import Gallery from '../components/Gallery';
-import {getData, shuffle} from '@/utils/gallery-data';
 
 const menuItems = [
   {name: 'all', path: '/', filter: 'all'},
@@ -13,8 +13,8 @@ const menuItems = [
   {name: 'digital others', path: '/filtered/digital-others', filter: 'digital/others'},
   {name: 'analog comercial', path: '/filtered/film-comercial', filter: 'film/comercial'},
   {name: 'analog others', path: '/filtered/film-others', filter: 'film/others'},
-  {name: 'prints', path: '/prints'},
-  {name: 'about', path: '/about'},
+  // {name: 'prints', path: '/prints'},
+  {name: 'about', path: '#'},
   {name: 'instagram', path: 'https://www.instagram.com/cedriccamera/', newTab: true},
   {name: 'contact', path: '/contact'},
 ];
