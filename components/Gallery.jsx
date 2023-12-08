@@ -1,17 +1,14 @@
 'use client';
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 import style from './Gallery.module.css';
-import Image from 'next/image';
 import BtnUpPage from './ui/BtnUpPage';
-import Modal from './Modal';
+import ImageGallery from './ImageGallery';
 
 const DEFAULT_COLUMNS = 4;
 
 export default function Gallery({imageData}) {
   const [numColumns, setNumColumns] = useState(DEFAULT_COLUMNS);
   const galleryRef = useRef(null);
-  const [openModal, setOpenModal] = useState(false);
-  const [selectedImg, setSelectedImg] = useState(null);
 
   // Function to handle screen resize
   const handleResize = useCallback(() => {
@@ -33,15 +30,6 @@ export default function Gallery({imageData}) {
     };
   }, [handleResize]);
 
-  //handler modal
-  const modalHandler = () => {
-    if (!openModal) {
-      setOpenModal(true);
-    } else {
-      setOpenModal(false);
-    }
-  };
-
   return (
     <div ref={galleryRef} className={style.container}>
       <BtnUpPage galleryRef={galleryRef} />
@@ -50,41 +38,13 @@ export default function Gallery({imageData}) {
           {(imageData.data || [])
             .filter((_, i) => i % numColumns === idx)
             .map(({public_id, asset_id, folder}) => (
-              <div
-                key={asset_id}
-                className={style['column__item']}
-                onClick={() => {
-                  setSelectedImg({public_id, folder, asset_id});
-                  modalHandler();
-                }}
-              >
-                <Image
-                  src={`https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/${public_id}`}
-                  quality="auto"
-                  width={300}
-                  height={400}
-                  sizes="(max-width: 300px) 50vw, 20vw"
-                  alt={`Cedric Florentin - Copyrighted image from my portfolio named ${asset_id}`}
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          {selectedImg && (
-            <Modal isOpen={openModal} closeModal={modalHandler}>
-              <Image
-                src={`https://res.cloudinary.com/dduwp6ob6/image/upload/f_auto,q_auto/${selectedImg.public_id}`}
-                quality={100}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                style={{objectFit: 'contain'}}
-                alt={`Cedric Florentin - Copyrighted image from my portfolio named ${selectedImg.asset_id}`}
-                loading="eager"
-                onLoad={() => {
-                  console.log('loaded');
-                }}
+              <ImageGallery
+                key={public_id}
+                public_id={public_id}
+                asset_id={asset_id}
+                folder={folder}
               />
-            </Modal>
-          )}
+            ))}
         </div>
       ))}
     </div>

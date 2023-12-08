@@ -1,0 +1,18 @@
+.item {
+  position: relative;
+}
+
+.item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* initially transparent */
+  transition: background 0.3s ease; /* smooth transition */
+}
+
+.item:hover::after {
+  background: var(--text-color-transparent); /* semi-transparent black on hover */
+}
