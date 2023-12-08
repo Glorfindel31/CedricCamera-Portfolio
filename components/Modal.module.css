@@ -17,7 +17,7 @@
   background: var(--background-color);
   color: var(--text-color);
   min-height: 90vh;
-  min-width: 60vw;
+  min-width: 90vw;
   display: flex;
   justify-content: center;
   align-items: center;
