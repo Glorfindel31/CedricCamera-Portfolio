@@ -25,7 +25,7 @@ const BtnTheme = ({}) => {
           htmlFor="checkbox"
           className={style['checkbox-label']}
           role="switch"
-          aria-checked={theme === 'dark'}
+          aria-checked={theme === 'dark' ? 'true' : 'false'}
         >
           <i>
             <BsFillMoonStarsFill />
